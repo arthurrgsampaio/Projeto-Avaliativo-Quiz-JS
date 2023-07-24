@@ -1,22 +1,154 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:type" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:image:type" content="" />
-    <meta property="og:image:width" content="" />
-    <meta property="og:image:height" content="" />
-    <meta property="og:locale" content="pt-BR" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:locale:alternate" content="es_ES" />
-    <meta property="og:url" content="" />
-    <title>Quiz em JS</title>
-  </head>
 
-  <body></body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:site_name" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:image:type" content="" />
+  <meta property="og:image:width" content="" />
+  <meta property="og:image:height" content="" />
+  <meta property="og:locale" content="pt-BR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:url" content="" />
+  <title>Quiz em JS</title>
+</head>
+
+<body>
+  <header>
+    <button class="tema-pg">Color</button>
+    <button class="muscia">Musica</button>
+  </header>
+  <main>   
+
+    <!-- Página Inicial -->
+    <div class="">
+      <h2>Quiz - Conhecimentos Gerais</h2>
+      <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
+      <div class="">
+        <form action="GET">
+          <label for="text">Nome: </label>
+          <input type="text">
+          <label for="text">Tema: </label>
+          <select name="temas" id="temas">
+            <option disabled selected>Selecione um tema</option>
+            <option value="entreterimento">Entreterimento</option>
+            <option value="artes">Artes</option>
+            <option value="esportes">Esportes</option>
+          </select>
+          <button>Iniciar</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Perguntas -->
+    <div class="perguntas">
+      <h1 class="titulo-materia"></h1>
+      <ol></ol>
+    </div>
+
+    <div class="btn-end">
+      <button id="concluir">Concluir</button>
+      <button id="reiniciar">Reiniciar</button>   
+      <button id="continuar">Continuar</button>   
+    </div>
+
+    <!-- Resultados -->
+    <div class="resultados">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Tema</th>
+            <th>Tempo</th>
+            <th>Pontuação</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>   
+
+    <div class="media">
+      <p class="media-acertos"></p>
+      <p class="media-erros"></p>
+    </div>
+
+    <div class="container-temas">
+      <h2>Entreterimento</h2>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <h2>Artes</h2>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+      <h2>Esportes</h2>
+      <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ol>
+    </div>
+
+  </main>
+</body>
+
 </html>
