@@ -1,11 +1,21 @@
 :root {
-  --primario: #a8c3dc; /* Cor primária a ser utilziada */
-  --secundario: #dce5ef; /* Cor secundária a ser utilizada */
-  --contraste: #4e65b1; /* Cor utilizada como contraste */
-  --texto-escuro: #050505; /* Texto para tela clara */
-  --texto-claro: #fafafa; /* Texto para tela escura */
-  --background: #ededed; /* Background Claro */
-  --background2: #111111; /* Background escuro*/
+  --primaria: #a8c3dc; /* Cor primária a ser utilziada */
+
+  --secundario-light: #dce5ef; /* Cor secundária a ser utilizada */
+  --contraste-light: #4e65b1; /* Cor utilizada como contraste */
+
+  --secundario-dark: #101923; /* Cor secundária a ser utilizada */
+  --contraste-dark: #95a3d0; /* Cor utilizada como contraste */
+
+  --texto-light: #050505; /* Texto para tela clara */
+  --texto-dark: #fafafa; /* Texto para tela escura */
+
+  --background-light: #ededed; /* Background claro */
+  --background-dark: #111111; /* Background escuro*/
+
+  --sombra-light: #ededed; /* Sombra clara */
+  --sombra-dark: #121212; /* Sombra escura */
+
   --1x: 0.25rem; /* 4px */
   --2x: 0.5rem; /* 8px */
   --3x: 0.75rem; /* 12px */
