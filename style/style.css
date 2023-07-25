@@ -1,79 +1,245 @@
+/* Imports */
 @import url("./var.css");
 
-
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color:#dce5ef;
-  }
-
-  .init-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-
-  .init-container {
-    width: 400px; 
-    height: 300px; 
-    background-color:#a8c3dc ; 
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    position: absolute; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    padding: 30px;
-    border-radius: 18%;
-    border-style: outset;
-  }
-
-  h2,p{
-    margin: 8px;
-    flex-direction: column; 
-    color: #050505;
-  }
-
-  #btn-iniciar{
-    border-color: #4e65b1;
-  }
-
-  .init-form {
-    display: flex;
-    margin-top: 5%;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  .init-form form{
-    display: flex;
-    flex-direction: column;    
-  }
-
-  #name{
-    margin: 5%;
-  }
-  
-  #btn-iniciar{
-    margin: 20%;
-
-  }
-  
-
-.btn-end{
-    display: none
-    ;
+/* *************************************************************************************************************************************** */
+/* Estilização geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.resultados{
-    display: none;
+body {
+  background-color: var(--background-light);
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  width: 100vw;
 }
 
-
-.container-temas{
-    display: none;
+/* *************************************************************************************************************************************** */
+/* Estilização header */
+header {
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
 }
 
+/* apenas momentâneo enquanto n colocamos */
+#timer {
+  font-size: var(--6x);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--contraste-light);
+}
+
+#header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#header-buttons button {
+  color: var(--contraste-light);
+}
+
+/* usado para esconder botões para alterar depois */
+.hide {
+  display: none;
+}
+
+.btn-header {
+  font-size: var(--4x);
+  border: none;
+  margin: var(--5x);
+  cursor: pointer;
+}
+
+/* *************************************************************************************************************************************** */
+/* Corpo do site */
+main {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.init-container {
+  width: 600px;
+  background-color: var(--primaria);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ededede0;
+  border-radius: var(--8x);
+  padding: var(--10x) 0;
+  box-shadow: 0px 0px 50px 3px var(--primaria);
+}
+
+.init-container h2,
+.init-container p {
+  color: var(--texto-light);
+  margin: var(--3x);
+}
+
+.init-container h2 {
+  font-size: var(--8x);
+}
+
+.init-container p {
+  font-size: var(--4x);
+  font-weight: 600;
+}
+
+.init-form {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.init-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-weight: 600;
+}
+
+#name,
+#temas {
+  margin: var(--2x) 0;
+  height: var(--9x);
+  border: none;
+  border-radius: var(--3x);
+  background-color: var(--secundaria-light);
+  border-style: none;
+  font-size: var(--6px);
+  cursor: pointer;
+}
+
+#btn-iniciar {
+  height: var(--9x);
+  margin: var(--10x) 0 0 0;
+  border: none;
+  border-radius: var(--5x);
+  font-size: var(--4x);
+  font-weight: bold;
+  color: var(--secundaria-light);
+  background-color: var(--contraste-light);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#btn-iniciar:hover {
+  color: var(--contraste-light);
+  border: 1px solid var(--contraste-light);
+  background-color: var(--secundaria-light);
+}
+
+/* *************************************************************************************************************************************** */
+/* "Escondendo" a arquitetura da página */
+.perguntas {
+  display: none;
+}
+
+.btn-end {
+  display: none;
+}
+
+#reiniciar {
+  display: none;
+}
+
+/* #concluir {
+  display: none;
+}
+
+#continuar {
+  display: none;
+} */
+
+.resultados {
+  display: none;
+}
+
+.container-temas {
+  display: none;
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização das perguntas */
+.perguntas {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+  height: 550px;
+  width: 50%;
+  padding-left: var(--7x);
+  color: var(--texto-light);
+  overflow-y: scroll;
+}
+
+.titulo-tema {
+  margin-bottom: var(--5x);
+}
+
+.perguntas-container {
+  margin-bottom: var(--2x);
+}
+
+.lista-organizacao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização da barra de scrol do overflow */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--4x);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--contraste-light);
+  border-radius: 10px;
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização botões inferiores */
+
+.btn-end {
+  padding-top: var(--4x);
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnInferiores {
+  width: 160px;
+  padding: var(--4x);
+  color: var(--secundaria-light);
+  background-color: var(--contraste-light);
+  border: none;
+  border-radius: var(--6x);
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+#reiniciar:hover {
+  background-color: #d36980;
+}
+
+#concluir:hover {
+  background-color: #55ce77;
+}
+
+#continuar:hover {
+  background-color: #6741c8;
+}
