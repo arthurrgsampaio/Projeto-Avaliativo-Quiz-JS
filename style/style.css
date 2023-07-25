@@ -176,7 +176,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: start;
-  height: 550px;
+  height: 480px;
   width: 50%;
   padding-left: var(--7x);
   color: var(--texto-light);
