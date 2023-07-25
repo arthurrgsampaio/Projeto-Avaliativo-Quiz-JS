@@ -1,1 +1,79 @@
 @import url("./var.css");
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color:#dce5ef;
+  }
+
+  .init-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .init-container {
+    width: 400px; 
+    height: 300px; 
+    background-color:#a8c3dc ; 
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    padding: 30px;
+    border-radius: 18%;
+    border-style: outset;
+  }
+
+  h2,p{
+    margin: 8px;
+    flex-direction: column; 
+    color: #050505;
+  }
+
+  #btn-iniciar{
+    border-color: #4e65b1;
+  }
+
+  .init-form {
+    display: flex;
+    margin-top: 5%;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .init-form form{
+    display: flex;
+    flex-direction: column;    
+  }
+
+  #name{
+    margin: 5%;
+  }
+  
+  #btn-iniciar{
+    margin: 20%;
+
+  }
+  
+
+.btn-end{
+    display: none
+    ;
+}
+
+.resultados{
+    display: none;
+}
+
+
+.container-temas{
+    display: none;
+}
+
