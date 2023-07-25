@@ -7,6 +7,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/daa472a851.js"
+      crossorigin="anonymous"
+    ></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:site_name" content="" />
@@ -28,8 +32,22 @@
 
   <body>
     <header>
-      <button class="tema-pg">Color</button>
-      <button class="muscia">Musica</button>
+      <div id="timer">00:13</div>
+
+      <div id="header-buttons">
+        <button class="btn-header musica" id="musicON">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+        <button class="btn-header musica hide" id="musicOFF">
+          <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+        <button class="btn-header btn-tema" id="changeToLight">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+        <button class="btn-header btn-tema hide" id="changeToDark">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
     </header>
     <main>
       <!-- Página Inicial -->
@@ -53,15 +71,15 @@
       </div>
 
       <!-- Perguntas -->
+      <h1 class="titulo-tema"></h1>
       <div class="perguntas">
-        <h1 class="titulo-materia"></h1>
         <ol id="lista-perguntas"></ol>
       </div>
 
       <div class="btn-end">
-        <button id="concluir">Concluir</button>
-        <button id="reiniciar">Reiniciar</button>
-        <button id="continuar">Continuar</button>
+        <button id="reiniciar" class="btnInferiores">Reiniciar</button>
+        <button id="concluir" class="btnInferiores">Concluir</button>
+        <button id="continuar" class="btnInferiores">Continuar</button>
       </div>
 
       <!-- Resultados -->

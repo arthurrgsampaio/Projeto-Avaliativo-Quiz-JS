@@ -1,10 +1,10 @@
 :root {
   --primaria: #a8c3dc; /* Cor primária a ser utilziada */
 
-  --secundario-light: #dce5ef; /* Cor secundária a ser utilizada */
+  --secundaria-light: #dce5ef; /* Cor secundária a ser utilizada */
   --contraste-light: #4e65b1; /* Cor utilizada como contraste */
 
-  --secundario-dark: #101923; /* Cor secundária a ser utilizada */
+  --secundaria-dark: #101923; /* Cor secundária a ser utilizada */
   --contraste-dark: #95a3d0; /* Cor utilizada como contraste */
 
   --texto-light: #050505; /* Texto para tela clara */
