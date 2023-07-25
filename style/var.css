@@ -1,0 +1,20 @@
+:root {
+  --primario: #a8c3dc; /* Cor primária a ser utilziada */
+  --secundario: #dce5ef; /* Cor secundária a ser utilizada */
+  --contraste: #4e65b1; /* Cor utilizada como contraste */
+  --texto-escuro: #050505; /* Texto para tela clara */
+  --texto-claro: #fafafa; /* Texto para tela escura */
+  --background: #ededed; /* Background Claro */
+  --background2: #111111; /* Background escuro*/
+  --1x: 0.25rem; /* 4px */
+  --2x: 0.5rem; /* 8px */
+  --3x: 0.75rem; /* 12px */
+  --4x: 1rem; /* 16px */
+  --5x: 1.25rem; /* 20px */
+  --6x: 1.5rem; /* 24px */
+  --7x: 1.75rem; /* 28px */
+  --8x: 2rem; /* 32px */
+  --9x: 2.25rem; /* 36px */
+  --10x: 2.5rem; /* 40px */
+  --20x: 5rem; /* 80px */
+}
