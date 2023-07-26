@@ -31,14 +31,12 @@ const btnArea = document.querySelector(".btn-end");
 const btnReiniciar = document.querySelector("#reiniciar");
 const btnConcluir = document.querySelector("#concluir");
 const btnContinuar = document.querySelector("#continuar");
+const btnVoltar = document.querySelector("#voltar");
 
 // botões perguntas
-const divPerguntas = document.querySelectorAll(".btnInferiores");
 const divResultados = document.querySelector(".resultados");
 const divMedia = document.querySelector(".media");
 const divConTemas = document.querySelector(".container-temas");
-
-console.log({ divPerguntas });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Iniciar
@@ -56,6 +54,7 @@ function mostrarTema(values) {
   btnReiniciar.style = "display: block";
   btnConcluir.style = "display: block";
   btnContinuar.style = "display: block";
+  btnVoltar.style = "display: none";
   tituloTema.style = "display: block";
   for (let value of values) {
     listaPerguntas.innerHTML += `
@@ -109,7 +108,7 @@ btnIniciar.addEventListener("click", () => {
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Reiniciar
-function BoataoReiniciar() {
+function BotaoReiniciar() {
   mainPart.style.display = "flex";
   mainPart.style = "margin-top: 7%";
   perguntasContainer.style.display = "none";
@@ -122,7 +121,7 @@ function BoataoReiniciar() {
 }
 
 btnReiniciar.addEventListener("click", () => {
-  BoataoReiniciar();
+  BotaoReiniciar();
 });
 console.log({ btnArea });
 
@@ -131,17 +130,42 @@ console.log({ btnArea });
 function BotaoContinuar() {
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
-  divPerguntas.style.display = "none";
 
-  console.log(Btncontinuar);
+  console.log(btnContinuar);
 }
 
 btnContinuar.addEventListener("click", () => {
-  btnArea.style.display = "none";
+  btnContinuar.style.display = "none";
+  btnConcluir.style.display = "none";
+  btnReiniciar.style.display = "none";
+  btnVoltar.style.display = "block";
   divResultados.style.display = "block";
   divMedia.style.display = "block";
   divConTemas.style.display = "block";
   BotaoContinuar();
+});
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Botão Voltar
+
+function BotaoVoltar() {
+  mainPart.style.display = "flex";
+  mainPart.style = "margin-top: 7%";
+  perguntasContainer.style.display = "none";
+  tituloTema.style.display = "none";
+  btnArea.style.display = "none";
+  divResultados.style.display = "none";
+  divMedia.style.display = "none";
+  divConTemas.style.display = "none";
+  containerInicial.style.display = "flex";
+  nome.value = "";
+  tema.value = "0";
+  selectedTema = "";
+  console.log(btnReiniciar);
+}
+
+btnVoltar.addEventListener("click", () => {
+  BotaoVoltar();
 });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,16 +201,19 @@ const audio = document.getElementById("audioPlay");
 const musicOn = document.getElementById("musicON");
 const musicOff = document.getElementById("musicOFF");
 const muteBtn = document.getElementById("audioMute");
+const seta = document.getElementById("seta");
 
 function playPause() {
   if (audio.paused) {
     audio.play();
     musicOn.style.display = "block";
     musicOff.style.display = "none";
+    seta.style.display = "none";
   } else {
     audio.pause();
     musicOn.style.display = "none";
     musicOff.style.display = "block";
+    seta.style.display = "none";
   }
 }
 

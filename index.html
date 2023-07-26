@@ -34,14 +34,17 @@
     <header>
       <div id="timer">00:13</div>
 
-      <audio
-        src="./audio/ES_Issue - AGST.mp3"
-        autoplay
-        loop
-        id="audioPlay"
-      ></audio>
+      <audio autoplay loop id="audioPlay">
+        <source src="./audio/ES_Issue - AGST.mp3" type="audio/mp3" />
+      </audio>
 
       <div id="header-buttons">
+        <div id="seta">
+          <p>
+            Sem aúdio, ou quer mutar? Clique aqui
+            <i class="fa-solid fa-arrow-right"></i>
+          </p>
+        </div>
         <button class="btn-header musica" id="audioMute">
           <p><i class="fa-solid fa-volume-high" id="musicON"></i></p>
           <p><i class="fa-solid fa-volume-xmark hide" id="musicOFF"></i></p>
@@ -78,12 +81,6 @@
       <h1 class="titulo-tema"></h1>
       <div class="perguntas">
         <ol id="lista-perguntas"></ol>
-      </div>
-
-      <div class="btn-end">
-        <button id="reiniciar" class="btnInferiores">Reiniciar</button>
-        <button id="concluir" class="btnInferiores">Concluir</button>
-        <button id="continuar" class="btnInferiores">Continuar</button>
       </div>
 
       <!-- Resultados -->
@@ -174,6 +171,15 @@
           <li></li>
           <li></li>
         </ol>
+      </div>
+
+      <div class="btn-end">
+        <button id="reiniciar" class="btnInferiores">Reiniciar</button>
+        <button id="concluir" class="btnInferiores">Concluir</button>
+        <button id="continuar" class="btnInferiores">Continuar</button>
+        <button id="voltar" class="btnInferiores">
+          Voltar à pagina inicial
+        </button>
       </div>
     </main>
   </body>

@@ -37,11 +37,13 @@ header {
 #header-buttons {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #header-buttons button {
   color: var(--contraste-light);
   background-color: transparent;
+  font-size: var(--5x);
 }
 
 /* usado para esconder botões para alterar depois */
@@ -54,6 +56,14 @@ header {
   border: none;
   margin: var(--5x);
   cursor: pointer;
+}
+
+#seta {
+  font-weight: 500;
+  position: absolute;
+  width: 315px;
+  left: -300px;
+  color: var(--texto-light);
 }
 
 /* *************************************************************************************************************************************** */
@@ -164,6 +174,10 @@ main {
   display: none;
 }
 
+#voltar {
+  display: none;
+}
+
 .resultados {
   display: none;
 }
@@ -183,6 +197,10 @@ main {
   padding-left: var(--7x);
   color: var(--texto-light);
   overflow-y: scroll;
+}
+
+#lista-perguntas {
+  width: 100%;
 }
 
 .titulo-tema {
@@ -258,4 +276,10 @@ main {
 
 #continuar:hover {
   background-color: #ab90ef;
+}
+
+#voltar:hover {
+  color: var(--contraste-light);
+  border: 1px solid var(--contraste-light);
+  background-color: var(--secundaria-light);
 }
