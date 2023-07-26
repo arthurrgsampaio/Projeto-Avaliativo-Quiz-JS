@@ -201,6 +201,9 @@ main {
 
 .perguntas-container {
   margin-bottom: var(--2x);
+  border: 1px solid var(--contraste-dark);
+  border-radius: var(--3x);
+  padding: var(--2x);
 }
 
 .lista-organizacao {
@@ -211,6 +214,12 @@ main {
 
 .lista-organizacao label {
   color: var(--texto-dark);
+}
+
+.separate {
+  margin: var(--1x) var(--2x);
+  display: flex;
+  gap: var(--2x);
 }
 
 /* *************************************************************************************************************************************** */
@@ -257,5 +266,5 @@ main {
 }
 
 #continuar:hover {
-  background-color: #6741c8;
+  background-color: #ab90ef;
 }
