@@ -88,6 +88,14 @@ function BotaoContinuar() {
   console.log(Btncontinuar);
 };
 
+function BoataoReiniciar() {
+  perguntasContainer.style.display = "none";
+  tituloTema.style.display = "none";
+  btnArea.style.display = "none";
+  containerInicial.style.display = "flex"
+  console.log(btnReiniciar);
+};
+
 
 btnIniciar.addEventListener("click", () => {
   if (selectedTema === "entreterimento") {
@@ -116,4 +124,7 @@ btnContinuar.addEventListener("click",() => {
 });
   
 
+btnReiniciar.addEventListener("click",() =>{
+  BoataoReiniciar( )
+} )
 console.log({btnArea})
