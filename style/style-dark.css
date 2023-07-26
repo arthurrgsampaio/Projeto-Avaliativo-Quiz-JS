@@ -1,0 +1,51 @@
+
+/* *************************************************************************************************************************************** */
+/* Dark Mode */
+
+
+body.dark {
+    background-color: var(--background-dark);
+  }
+  
+  #timer.dark {
+    color: var(--contraste-dark);
+  }
+  
+  #header-buttons button.dark {
+    color: var(--contraste-dark);
+    background-color: transparent;
+  }
+  
+  .init-container h2.dark,
+  .init-container p.dark {
+    color: var(--texto-dark);
+  }
+  
+  #name.dark,
+  #temas.dark {
+    background-color: var(--secundaria-dark);
+  }
+  
+  #btn-iniciar.dark {
+    color: var(--secundaria-light);
+    background-color: var(--contraste-dark);
+  }
+  
+  #btn-iniciar:hover.dark {
+    color: var(--contraste-dark);
+    border: 1px solid var(--contraste-dark);
+    background-color: var(--secundaria-dark);
+  }
+  
+  .perguntas.dark {
+    color: var(--texto-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb.dark {
+    background-color: var(--contraste-dark);
+  }
+  
+  .btnInferiores.dark {
+    color: var(--secundaria-dark);
+    background-color: var(--contraste-dark);
+  }

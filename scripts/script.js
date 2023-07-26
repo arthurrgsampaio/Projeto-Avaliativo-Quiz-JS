@@ -128,3 +128,14 @@ btnReiniciar.addEventListener("click",() =>{
   BoataoReiniciar( )
 } )
 console.log({btnArea})
+
+
+
+const linkCss = document.querySelector("#link-css");
+console.log({linkCss});
+
+const darkMode = document.getElementById("alternarModo");
+
+darkMode.addEventListener("click", () => {
+  linkCss.href = "./style/style-dark.css"
+})
