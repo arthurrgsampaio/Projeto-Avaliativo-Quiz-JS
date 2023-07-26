@@ -170,3 +170,24 @@ darkMode.addEventListener("click", () => {
     alternateMode(counter);
   }
 });
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ON/Mute Audio Button
+
+const audio = document.getElementById("audioPlay");
+const musicOn = document.getElementById("musicON");
+const musicOff = document.getElementById("musicOFF");
+const muteBtn = document.getElementById("audioMute");
+
+function playPause() {
+  if (audio.paused) {
+    audio.play();
+    musicOn.style.display = "block";
+    musicOff.style.display = "none";
+  } else {
+    audio.pause();
+    musicOn.style.display = "none";
+    musicOff.style.display = "block";
+  }
+}
+
+muteBtn.addEventListener("click", playPause);

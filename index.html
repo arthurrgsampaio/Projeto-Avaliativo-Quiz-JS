@@ -34,23 +34,15 @@
     <header>
       <div id="timer">00:13</div>
 
-      <!-- <div id="header-buttons">
-        <button class="btn-header musica" id="musicON">
-          <i class="fa-solid fa-volume-high"></i>
-        </button>
-        <button class="btn-header musica hide" id="musicOFF">
-          <i class="fa-solid fa-volume-xmark"></i>
-        </button>
-        <button class="btn-header btn-tema" id="changeToLight">
-          <i class="fa-solid fa-sun"></i>
-        </button>
-        <button class="btn-header btn-tema hide" id="changeToDark">
-          <i class="fa-solid fa-moon"></i>
-        </button>
-      </div> -->
+      <audio
+        src="./audio/ES_Issue - AGST.mp3"
+        autoplay
+        loop
+        id="audioPlay"
+      ></audio>
 
       <div id="header-buttons">
-        <button class="btn-header musica">
+        <button class="btn-header musica" id="audioMute">
           <p><i class="fa-solid fa-volume-high" id="musicON"></i></p>
           <p><i class="fa-solid fa-volume-xmark hide" id="musicOFF"></i></p>
         </button>
