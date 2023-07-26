@@ -116,6 +116,7 @@ function BoataoReiniciar() {
   btnArea.style.display = "none";
   containerInicial.style.display = "flex";
   tema.value = "0";
+  selectedTema = "";
   console.log(btnReiniciar);
 }
 
