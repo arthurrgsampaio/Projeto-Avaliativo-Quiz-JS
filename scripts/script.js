@@ -47,6 +47,7 @@ tema.addEventListener("change", () => {
 });
 
 function mostrarTema(values) {
+  listaPerguntas.innerHTML = "";
   let contador = 0;
   containerInicial.style = "display: none";
   perguntasContainer.style = "display: flex";
