@@ -1,51 +1,261 @@
+/* Imports */
+@import url("./var.css");
 
 /* *************************************************************************************************************************************** */
-/* Dark Mode */
+/* Estilização geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  background-color: var(--secundaria-dark);
+  font-family: "Inter", sans-serif;
+  height: 100vh;
+  width: 100vw;
+}
 
-body.dark {
-    background-color: var(--background-dark);
-  }
-  
-  #timer.dark {
-    color: var(--contraste-dark);
-  }
-  
-  #header-buttons button.dark {
-    color: var(--contraste-dark);
-    background-color: transparent;
-  }
-  
-  .init-container h2.dark,
-  .init-container p.dark {
-    color: var(--texto-dark);
-  }
-  
-  #name.dark,
-  #temas.dark {
-    background-color: var(--secundaria-dark);
-  }
-  
-  #btn-iniciar.dark {
-    color: var(--secundaria-light);
-    background-color: var(--contraste-dark);
-  }
-  
-  #btn-iniciar:hover.dark {
-    color: var(--contraste-dark);
-    border: 1px solid var(--contraste-dark);
-    background-color: var(--secundaria-dark);
-  }
-  
-  .perguntas.dark {
-    color: var(--texto-dark);
-  }
-  
-  ::-webkit-scrollbar-thumb.dark {
-    background-color: var(--contraste-dark);
-  }
-  
-  .btnInferiores.dark {
-    color: var(--secundaria-dark);
-    background-color: var(--contraste-dark);
-  }
+/* *************************************************************************************************************************************** */
+/* Estilização header */
+header {
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* apenas momentâneo enquanto n colocamos */
+#timer {
+  font-size: var(--6x);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--contraste-dark);
+}
+
+#header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+#header-buttons button {
+  color: var(--contraste-dark);
+  background-color: transparent;
+}
+
+/* usado para esconder botões para alterar depois */
+.hide {
+  display: none;
+}
+
+#changeToDark {
+  display: none;
+}
+
+#changeToLight {
+  display: block;
+}
+
+.btn-header {
+  font-size: var(--4x);
+  border: none;
+  margin: var(--5x);
+  cursor: pointer;
+}
+
+/* *************************************************************************************************************************************** */
+/* Corpo do site */
+main {
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 7%;
+}
+
+.init-container {
+  width: 600px;
+  background-color: var(--primaria);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ededede0;
+  border-radius: var(--8x);
+  padding: var(--10x) 0;
+  box-shadow: 0px 0px 50px 1px var(--primaria);
+}
+
+.init-container h2,
+.init-container p {
+  color: var(--texto-dark);
+  margin: var(--3x);
+}
+
+.init-container h2 {
+  font-size: var(--8x);
+}
+
+.init-container p {
+  font-size: var(--4x);
+  font-weight: 600;
+}
+
+.init-form {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 5%;
+}
+
+.init-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-weight: 600;
+  color: var(--texto-dark);
+}
+
+#name,
+#temas {
+  margin: var(--2x) 0;
+  padding-left: var(--3x);
+  height: var(--9x);
+  border: none;
+  border-radius: var(--3x);
+  background-color: var(--secundaria-light);
+  border-style: none;
+  font-size: var(--6px);
+  cursor: pointer;
+}
+
+#btn-iniciar {
+  height: var(--9x);
+  margin: var(--10x) 0 0 0;
+  border: none;
+  border-radius: var(--5x);
+  font-size: var(--4x);
+  font-weight: bold;
+  color: var(--secundaria-dark);
+  background-color: var(--contraste-dark);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#btn-iniciar:hover {
+  color: var(--contraste-dark);
+  border: 1px solid var(--contraste-dark);
+  background-color: var(--secundaria-dark);
+}
+
+/* *************************************************************************************************************************************** */
+/* "Escondendo" a arquitetura da página */
+.perguntas {
+  display: none;
+}
+
+.btn-end {
+  display: none;
+}
+
+#reiniciar {
+  display: none;
+}
+
+#concluir {
+  display: none;
+}
+
+#continuar {
+  display: none;
+}
+
+.resultados {
+  display: none;
+}
+
+.container-temas {
+  display: none;
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização das perguntas */
+.perguntas {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: start;
+  height: 480px;
+  width: 50%;
+  padding-left: var(--7x);
+  color: var(--texto-dark);
+  overflow-y: scroll;
+}
+
+.titulo-tema {
+  color: var(--texto-dark);
+  margin-bottom: var(--5x);
+}
+
+.perguntas-container {
+  margin-bottom: var(--2x);
+}
+
+.lista-organizacao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.lista-organizacao label {
+  color: var(--texto-dark);
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização da barra de scrol do overflow */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--4x);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--contraste-dark);
+  border-radius: 10px;
+}
+
+/* *************************************************************************************************************************************** */
+/* Estilização botões inferiores */
+
+.btn-end {
+  padding-top: var(--4x);
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnInferiores {
+  width: 160px;
+  padding: var(--4x);
+  color: var(--secundaria-dark);
+  background-color: var(--contraste-dark);
+  border: none;
+  border-radius: var(--6x);
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+#reiniciar:hover {
+  background-color: #d36980;
+}
+
+#concluir:hover {
+  background-color: #55ce77;
+}
+
+#continuar:hover {
+  background-color: #6741c8;
+}
