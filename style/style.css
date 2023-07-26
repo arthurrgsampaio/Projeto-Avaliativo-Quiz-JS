@@ -41,6 +41,7 @@ header {
 
 #header-buttons button {
   color: var(--contraste-light);
+  background-color: transparent;
 }
 
 /* usado para esconder botões para alterar depois */
@@ -112,6 +113,7 @@ main {
 #name,
 #temas {
   margin: var(--2x) 0;
+  padding-left: var(--3x);
   height: var(--9x);
   border: none;
   border-radius: var(--3x);
@@ -184,6 +186,7 @@ main {
 }
 
 .titulo-tema {
+  color: var(--texto-light);
   margin-bottom: var(--5x);
 }
 
@@ -195,6 +198,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.lista-organizacao label {
+  color: var(--texto-light);
 }
 
 /* *************************************************************************************************************************************** */

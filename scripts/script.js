@@ -1,8 +1,12 @@
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Imports
 import { entretenimento } from "./entretenimento.js";
 import { artes } from "./artes.js";
 import { esportes } from "./esportes.js";
 
-// Coloca css na main
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Declaração das variáveis
+// Colocar css na main
 const mainPart = document.querySelector("main");
 
 // Guarda o nome da pessoa na constante
@@ -11,9 +15,6 @@ const nome = document.getElementById("name");
 // Guarda o tema escolhido pela pessoa
 const tema = document.getElementById("temas");
 let selectedTema;
-tema.addEventListener("change", () => {
-  selectedTema = tema.value;
-});
 let valores = [];
 
 // Aplica JS no botão de iniciar
@@ -31,13 +32,19 @@ const btnReiniciar = document.querySelector("#reiniciar");
 const btnConcluir = document.querySelector("#concluir");
 const btnContinuar = document.querySelector("#continuar");
 
-// botões perguntas 
+// botões perguntas
 const divPerguntas = document.querySelectorAll(".btnInferiores");
 const divResultados = document.querySelector(".resultados");
 const divMedia = document.querySelector(".media");
-const divConTemas = document.querySelector(".container-temas")
+const divConTemas = document.querySelector(".container-temas");
 
-console.log({divPerguntas})
+console.log({ divPerguntas });
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Botão Iniciar
+tema.addEventListener("change", () => {
+  selectedTema = tema.value;
+});
 
 function mostrarTema(values) {
   let contador = 0;
@@ -46,8 +53,9 @@ function mostrarTema(values) {
   mainPart.style = "margin-top: var(--8x)";
   btnArea.style = "display: flex";
   btnReiniciar.style = "display: block";
-  btnConcluir.style = "display: block"; 
-  btnContinuar.style = "display: block";   
+  btnConcluir.style = "display: block";
+  btnContinuar.style = "display: block";
+  tituloTema.style = "display: block";
   for (let value of values) {
     listaPerguntas.innerHTML += `
             <li class="perguntas-container">
@@ -80,23 +88,6 @@ function mostrarTema(values) {
   }
 }
 
-function BotaoContinuar() {
-  perguntasContainer.style.display = "none";
-  tituloTema.style.display = "none";
-  divPerguntas.style.display = "none"; 
-    
-  console.log(Btncontinuar);
-};
-
-function BoataoReiniciar() {
-  perguntasContainer.style.display = "none";
-  tituloTema.style.display = "none";
-  btnArea.style.display = "none";
-  containerInicial.style.display = "flex"
-  console.log(btnReiniciar);
-};
-
-
 btnIniciar.addEventListener("click", () => {
   if (selectedTema === "entreterimento") {
     valores = entretenimento;
@@ -115,27 +106,65 @@ btnIniciar.addEventListener("click", () => {
   }
 });
 
-btnContinuar.addEventListener("click",() => {
-  btnArea.style.display = "none";  
-  divResultados.style.display = "block"
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Botão Reiniciar
+function BoataoReiniciar() {
+  mainPart.style.display = "flex";
+  mainPart.style = "margin-top: 7%";
+  perguntasContainer.style.display = "none";
+  tituloTema.style.display = "none";
+  btnArea.style.display = "none";
+  containerInicial.style.display = "flex";
+  tema.value = "0";
+  console.log(btnReiniciar);
+}
+
+btnReiniciar.addEventListener("click", () => {
+  BoataoReiniciar();
+});
+console.log({ btnArea });
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Botão Continuar
+function BotaoContinuar() {
+  perguntasContainer.style.display = "none";
+  tituloTema.style.display = "none";
+  divPerguntas.style.display = "none";
+
+  console.log(Btncontinuar);
+}
+
+btnContinuar.addEventListener("click", () => {
+  btnArea.style.display = "none";
+  divResultados.style.display = "block";
   divMedia.style.display = "block";
   divConTemas.style.display = "block";
-  BotaoContinuar()
+  BotaoContinuar();
 });
-  
 
-btnReiniciar.addEventListener("click",() =>{
-  BoataoReiniciar( )
-} )
-console.log({btnArea})
-
-
-
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Dark Mode Button
 const linkCss = document.querySelector("#link-css");
-console.log({linkCss});
+console.log({ linkCss });
 
 const darkMode = document.getElementById("alternarModo");
 
+let counter = 1;
+
+function alternateMode(valor) {
+  if (valor == 0) {
+    linkCss.href = "./style/style-dark.css";
+  } else if (valor == 1) {
+    linkCss.href = "./style/style.css";
+  }
+}
+
 darkMode.addEventListener("click", () => {
-  linkCss.href = "./style/style-dark.css"
-})
+  if (counter == 1) {
+    counter = 0;
+    alternateMode(counter);
+  } else if (counter == 0) {
+    counter = 1;
+    alternateMode(counter);
+  }
+});
