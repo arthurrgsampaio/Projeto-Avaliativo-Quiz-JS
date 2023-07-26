@@ -26,7 +26,7 @@
     <meta property="og:locale:alternate" content="es_ES" />
     <meta property="og:url" content="" />
     <script type="module" src="./scripts/script.js" defer></script>
-    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/style.css" id="link-css" />
     <title>Quiz em JS</title>
   </head>
 
@@ -34,7 +34,7 @@
     <header>
       <div id="timer">00:13</div>
 
-      <div id="header-buttons">
+      <!-- <div id="header-buttons">
         <button class="btn-header musica" id="musicON">
           <i class="fa-solid fa-volume-high"></i>
         </button>
@@ -47,7 +47,20 @@
         <button class="btn-header btn-tema hide" id="changeToDark">
           <i class="fa-solid fa-moon"></i>
         </button>
+      </div> -->
+
+      <div id="header-buttons">
+        <button class="btn-header musica">
+          <p><i class="fa-solid fa-volume-high" id="musicON"></i></p>
+          <p><i class="fa-solid fa-volume-xmark hide" id="musicOFF"></i></p>
+        </button>
+      
+        <button class="btn-header btn-tema" id="alternarModo">
+          <p><i class="fa-solid fa-moon" id="changeToDark"></i></p>
+          <p><i class="fa-solid fa-sun hide" id="changeToLight"></i></p>
+        </button>
       </div>
+
     </header>
     <main>
       <!-- Página Inicial -->
