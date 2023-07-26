@@ -31,6 +31,14 @@ const btnReiniciar = document.querySelector("#reiniciar");
 const btnConcluir = document.querySelector("#concluir");
 const btnContinuar = document.querySelector("#continuar");
 
+// botões perguntas 
+const divPerguntas = document.querySelectorAll(".btnInferiores");
+const divResultados = document.querySelector(".resultados");
+const divMedia = document.querySelector(".media");
+const divConTemas = document.querySelector(".container-temas")
+
+console.log({divPerguntas})
+
 function mostrarTema(values) {
   let contador = 0;
   containerInicial.style = "display: none";
@@ -38,6 +46,8 @@ function mostrarTema(values) {
   mainPart.style = "margin-top: var(--8x)";
   btnArea.style = "display: flex";
   btnReiniciar.style = "display: block";
+  btnConcluir.style = "display: block"; 
+  btnContinuar.style = "display: block";   
   for (let value of values) {
     listaPerguntas.innerHTML += `
             <li class="perguntas-container">
@@ -70,6 +80,15 @@ function mostrarTema(values) {
   }
 }
 
+function BotaoContinuar() {
+  perguntasContainer.style.display = "none";
+  tituloTema.style.display = "none";
+  divPerguntas.style.display = "none"; 
+    
+  console.log(Btncontinuar);
+};
+
+
 btnIniciar.addEventListener("click", () => {
   if (selectedTema === "entreterimento") {
     valores = entretenimento;
@@ -87,3 +106,14 @@ btnIniciar.addEventListener("click", () => {
     console.log(`Não funcionou...`);
   }
 });
+
+btnContinuar.addEventListener("click",() => {
+  btnArea.style.display = "none";  
+  divResultados.style.display = "block"
+  divMedia.style.display = "block";
+  divConTemas.style.display = "block";
+  BotaoContinuar()
+});
+  
+
+console.log({btnArea})
