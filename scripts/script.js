@@ -74,22 +74,30 @@ function mostrarTema(values) {
                 <div class="separate">
                     <input type="radio" name="${
                       "select" + contador
-                    }" value="0"><label>${value.alternativas[0]}</label>
+                    }" value=0 class = "${
+      "input" + contador
+    }" required><label>${value.alternativas[0]}</label>
                 </div>
                 <div class="separate">
                     <input type="radio" name="${
                       "select" + contador
-                    }" value="1"><label>${value.alternativas[1]}</label>
+                    }" value=1 class = "${
+      "input" + contador
+    }" required><label>${value.alternativas[1]}</label>
                 </div>
                 <div class="separate">
                     <input type="radio" name="${
                       "select" + contador
-                    }" value="2"><label>${value.alternativas[2]}</label>
+                    }" value=2 class = "${
+      "input" + contador
+    }" required><label>${value.alternativas[2]}</label>
                 </div>
                 <div class="separate">
                     <input type="radio" name="${
                       "select" + contador
-                    }" value="3"><label>${value.alternativas[3]}</label>
+                    }" value=3 class = "${
+      "input" + contador
+    }" required><label>${value.alternativas[3]}</label>
                 </div>
             </div>
             </li>
@@ -313,3 +321,63 @@ function playPause() {
 }
 
 muteBtn.addEventListener("click", playPause);
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Checar
+
+let validador = [];
+let respostas = [];
+let temaSelecionado;
+
+let validar0;
+let validar1;
+let validar2;
+let validar3;
+let validar4;
+let validar5;
+let validar6;
+let validar7;
+let validar8;
+let validar9;
+let validar10;
+
+btnConcluir.addEventListener("click", (ev) => {
+  ev.preventDefault();
+  validador = [];
+  respostas = [];
+  temaSelecionado = valores;
+  validar0 = document.querySelector('input[name="select0"]:checked').value;
+  validar1 = document.querySelector('input[name="select1"]:checked').value;
+  validar2 = document.querySelector('input[name="select2"]:checked').value;
+  validar3 = document.querySelector('input[name="select3"]:checked').value;
+  validar4 = document.querySelector('input[name="select4"]:checked').value;
+  validar5 = document.querySelector('input[name="select5"]:checked').value;
+  validar6 = document.querySelector('input[name="select6"]:checked').value;
+  validar7 = document.querySelector('input[name="select7"]:checked').value;
+  validar8 = document.querySelector('input[name="select8"]:checked').value;
+  validar9 = document.querySelector('input[name="select9"]:checked').value;
+  validar10 = document.querySelector('input[name="select9"]:checked');
+  checarQuestoes(temaSelecionado);
+});
+
+function checarQuestoes(objeto) {
+  for (let i = 0; i < objeto.length; i++) {
+    validador.push(objeto[i].correctAlternativa);
+  }
+  console.log(validador);
+  respostas.push(validar0);
+  respostas.push(validar1);
+  respostas.push(validar2);
+  respostas.push(validar3);
+  respostas.push(validar4);
+  respostas.push(validar5);
+  respostas.push(validar6);
+  respostas.push(validar7);
+  respostas.push(validar8);
+  respostas.push(validar9);
+  console.log(respostas);
+  console.log({ validar10 });
+  console.log(marcador);
+
+  pausar = true;
+}
