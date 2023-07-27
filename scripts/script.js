@@ -120,6 +120,7 @@ document.addEventListener("keydown", function (e) {
 });
 
 btnIniciar.addEventListener("click", () => {
+  console.log(nome.value);
   if (
     selectedTema === "entreterimento" &&
     nome.value != "" &&
@@ -128,7 +129,7 @@ btnIniciar.addEventListener("click", () => {
     valores = entretenimento;
     tituloTema.innerText = "Entreterimento";
     mostrarTema(valores);
-    cronometro();
+    cronometro();    
   } else if (
     selectedTema === "artes" &&
     nome.value != "" &&
@@ -161,6 +162,10 @@ let segundos = 0;
 let milissegundos = 0;
 let pausar = false;
 let interval;
+
+
+
+console.log(pausar);
 
 function cronometro() {
   divTimer.style.display = "flex";
@@ -219,6 +224,8 @@ console.log({ btnArea });
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Continuar
 function BotaoContinuar() {
+  const teste = [nome.value,tituloTema.innerHTML, minutos, segundos];  // U ARE WORKING HERE
+  console.log(teste)
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
@@ -266,6 +273,7 @@ function BotaoVoltar() {
 }
 
 btnVoltar.addEventListener("click", () => {
+  pausar = false;
   divTimer.style.display = "none";
   BotaoVoltar();
 });
@@ -342,6 +350,7 @@ let validar9;
 let validar10;
 
 btnConcluir.addEventListener("click", (ev) => {
+  pausar = true;
   ev.preventDefault();
   validador = [];
   respostas = [];
@@ -360,6 +369,7 @@ btnConcluir.addEventListener("click", (ev) => {
   checarQuestoes(temaSelecionado);
 });
 
+
 function checarQuestoes(objeto) {
   for (let i = 0; i < objeto.length; i++) {
     validador.push(objeto[i].correctAlternativa);
@@ -377,7 +387,20 @@ function checarQuestoes(objeto) {
   respostas.push(validar9);
   console.log(respostas);
   console.log({ validar10 });
-  console.log(marcador);
+  
+  
+  // minutosDados = minutos;
+  // segundosDados = segundos;  
+  
+  console.log(nome)
+  console.log(tituloTema)  
+  console.log(minutos);
+  console.log(segundos);
+  let dadosUsuario = [minutos, segundos]; 
+  console.log(dadosUsuario);
+  
+};
 
-  pausar = true;
-}
+
+
+
