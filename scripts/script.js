@@ -44,6 +44,8 @@ const clMinutos = document.querySelector(".minutes");
 const clSegundos = document.querySelector(".seconds");
 const clMilissegundos = document.querySelector(".milliseconds");
 
+//alerta
+const alert = document.getElementById("alert");
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Iniciar
@@ -63,6 +65,7 @@ function mostrarTema(values) {
   btnContinuar.style = "display: block";
   btnVoltar.style = "display: none";
   tituloTema.style = "display: block";
+  alert.style.display = "none";
   for (let value of values) {
     listaPerguntas.innerHTML += `
             <li class="perguntas-container">
@@ -95,25 +98,50 @@ function mostrarTema(values) {
   }
 }
 
+function alerta() {
+  alert.style.display = "flex";
+  setInterval(() => {
+    alert.style.display = "none";
+  }, 4300);
+}
+
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+  }
+});
+
 btnIniciar.addEventListener("click", () => {
-  
-  if (selectedTema === "entreterimento") {
+  if (
+    selectedTema === "entreterimento" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
     valores = entretenimento;
-    cronometro();
     tituloTema.innerText = "Entreterimento";
     mostrarTema(valores);
-  } else if (selectedTema === "artes") {
+    cronometro();
+  } else if (
+    selectedTema === "artes" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
     valores = artes;
     tituloTema.innerText = "Artes";
-    cronometro();
     mostrarTema(valores);
-  } else if (selectedTema === "esportes") {
+    cronometro();
+  } else if (
+    selectedTema === "esportes" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
     valores = esportes;
     tituloTema.innerText = "Esportes";
     mostrarTema(valores);
     cronometro();
   } else {
     console.log(`Não funcionou...`);
+    alerta();
   }
 });
 
@@ -129,31 +157,28 @@ let interval;
 function cronometro() {
   divTimer.style.display = "flex";
 
-  interval = setInterval(() =>{
+  interval = setInterval(() => {
+    if (!pausar) {
+      milissegundos += 10;
 
-    if(!pausar) { 
-
-      milissegundos += 10
-
-      if(milissegundos === 1000 ){
+      if (milissegundos === 1000) {
         segundos++;
         milissegundos = 0;
       }
 
-      if(segundos === 60) {
+      if (segundos === 60) {
         minutos++;
         segundos = 0;
       }
 
       clMinutos.textContent = tempo(minutos);
-      clSegundos.textContent = tempo(segundos);      
-
+      clSegundos.textContent = tempo(segundos);
     }
-
-  }, 10)};
+  }, 10);
+}
 
 function tempo(time) {
-    return time < 10 ? `0${time}` : time;
+  return time < 10 ? `0${time}` : time;
 }
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,12 +187,12 @@ function BotaoReiniciar() {
   clearInterval(interval);
   milissegundos = 0;
   segundos = 0;
-  minutos = 0; 
+  minutos = 0;
 
   clMinutos.textContent = "00";
   clSegundos.textContent = "00";
-  
-  divTimer.style.display = "none"
+
+  divTimer.style.display = "none";
   mainPart.style.display = "flex";
   mainPart.style = "margin-top: 7%";
   perguntasContainer.style.display = "none";
@@ -175,7 +200,7 @@ function BotaoReiniciar() {
   btnArea.style.display = "none";
   containerInicial.style.display = "flex";
   tema.value = "0";
-  selectedTema = "";  
+  selectedTema = "";
 }
 
 btnReiniciar.addEventListener("click", () => {
@@ -186,14 +211,14 @@ console.log({ btnArea });
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Continuar
 function BotaoContinuar() {
-  divTimer.style.display = "none"
+  divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
 
   console.log(btnContinuar);
 }
 
-  btnContinuar.addEventListener("click", () => {
+btnContinuar.addEventListener("click", () => {
   btnContinuar.style.display = "none";
   btnConcluir.style.display = "none";
   btnReiniciar.style.display = "none";
@@ -211,12 +236,12 @@ function BotaoVoltar() {
   clearInterval(interval);
   milissegundos = 0;
   segundos = 0;
-  minutos = 0; 
+  minutos = 0;
 
   clMinutos.textContent = "00";
   clSegundos.textContent = "00";
 
-  divTimer.style.display = "none"
+  divTimer.style.display = "none";
   mainPart.style.display = "flex";
   mainPart.style = "margin-top: 7%";
   perguntasContainer.style.display = "none";
@@ -233,7 +258,7 @@ function BotaoVoltar() {
 }
 
 btnVoltar.addEventListener("click", () => {
-  divTimer.style.display = "none"
+  divTimer.style.display = "none";
   BotaoVoltar();
 });
 
@@ -288,4 +313,3 @@ function playPause() {
 }
 
 muteBtn.addEventListener("click", playPause);
-
