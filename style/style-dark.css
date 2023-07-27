@@ -271,6 +271,91 @@ main {
 }
 
 /* *************************************************************************************************************************************** */
+/* Estilização da página de resultados */
+.container-resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--8x);
+}
+
+.resultados {
+  justify-content: center;
+  display: none;
+  
+}
+
+#tabela-resultados {
+  width: 800px;
+  background-color: var(--primaria);
+  border: 1px solid var(--contraste-light);
+  border: 1px solid #ededede0;
+  border-radius: var(--8x);
+  padding: var(--4x);
+}
+
+#tabela-resultados .linha-head{
+  font-size: var(--6x);
+}
+
+#tabela-resultados td {
+  text-align: center;
+  font-size: var(--5x);
+}
+
+.media {
+  display: none;
+  gap: var(--10x);
+}
+
+.media-acertos {
+  font-size: var(--5x);
+  color: var(--cor-contador-acertos);
+  font-weight: bold;
+}
+
+.media-erros {
+  font-size: var(--5x);
+  color: var(--cor-contador-erros);
+  font-weight: bold;
+}
+
+.container-temas {
+  gap: var(--3x);
+  display: none;
+  margin-bottom: var(--10x);
+  color: var(--texto-dark);
+}
+
+#entretenimento h2, #artes h2, #esportes h2 {
+  font-size: var(--6x);
+}
+
+#entretenimento {
+  flex: 2;
+  margin: 0 var(--5x);
+  font-size: var(--5x);
+}
+
+#artes, #esportes {
+  flex: 2;
+  margin: 0 var(--5x);
+  font-size: var(--5x);
+}
+
+.ranking {
+  counter-reset: posicao;
+}
+
+p.position:before {
+  content: counter(posicao) ". ";
+  counter-increment: posicao;
+  font-weight: bold;
+  font-size: var(--4x);
+  padding: 0 var(--1x);
+}
+
+/* *************************************************************************************************************************************** */
 /* Estilização da barra de scrol do overflow */
 ::-webkit-scrollbar {
   width: 10px;
