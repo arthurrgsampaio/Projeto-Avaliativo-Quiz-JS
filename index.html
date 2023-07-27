@@ -32,11 +32,18 @@
 
   <body>
     <header>
-      <div id="timer">00:13</div>
+      <div id="timer">
+        <div class="minutes">00</div>
+        <div class="separator">:</div>
+        <div class="seconds">00</div>
+        <div class="milliseconds"></div>
+      </div>
 
-      <audio autoplay loop id="audioPlay">
-        <source src="./audio/ES_Issue - AGST.mp3" type="audio/mp3" />
-      </audio>
+      <div id="audio">
+        <audio autoplay loop id="audioPlay">
+          <source src="./audio/ES_Issue - AGST.mp3" type="audio/mp3" />
+        </audio>
+      </div>
 
       <div id="header-buttons">
         <div id="seta">
