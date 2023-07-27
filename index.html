@@ -31,6 +31,9 @@
   </head>
 
   <body>
+    <div id="alert">
+      <p>Por favor, digite seu nome e/ou selecione um tema!</p>
+    </div>
     <header>
       <div id="timer">
         <div class="minutes">00</div>
@@ -71,9 +74,9 @@
         <div class="init-form">
           <form action="">
             <label for="name">Nome: </label>
-            <input type="text" name="name" id="name" />
+            <input type="text" name="name" id="name" required />
             <label for="temas">Tema: </label>
-            <select name="temas" id="temas">
+            <select name="temas" id="temas" required>
               <option disabled selected value="0">Selecione um tema</option>
               <option value="entreterimento">Entreterimento</option>
               <option value="artes">Artes</option>
