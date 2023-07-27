@@ -17,6 +17,32 @@ body {
 }
 
 /* *************************************************************************************************************************************** */
+/* Alerta */
+
+#alert {
+  display: none;
+  width: 250px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--contraste-dark);
+  color: var(--texto-dark);
+  border: 1px solid var(--contraste-light);
+  position: absolute;
+  right: 15px;
+  bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--4x);
+  font-weight: bold;
+  text-align: center;
+}
+
+#alert p {
+  margin: var(--2x);
+}
+
+/* *************************************************************************************************************************************** */
 /* Estilização header */
 header {
   height: 10%;
