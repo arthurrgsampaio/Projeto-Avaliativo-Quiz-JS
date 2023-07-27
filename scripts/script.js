@@ -238,9 +238,9 @@ btnContinuar.addEventListener("click", () => {
   btnConcluir.style.display = "none";
   btnReiniciar.style.display = "none";
   btnVoltar.style.display = "block";
-  divResultados.style.display = "block";
-  divMedia.style.display = "block";
-  divConTemas.style.display = "block";
+  divResultados.style.display = "flex";
+  divMedia.style.display = "flex";
+  divConTemas.style.display = "flex";
   BotaoContinuar();
 });
 
