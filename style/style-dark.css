@@ -28,10 +28,14 @@ header {
 #timer {
   font-size: var(--6x);
   font-weight: bold;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   color: var(--contraste-dark);
+}
+
+#audio {
+  display: flex;
 }
 
 #header-buttons {
@@ -201,7 +205,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: start;
-  height: 480px;
+  height: 460px;
   width: 50%;
   padding-left: var(--7x);
   color: var(--texto-dark);
