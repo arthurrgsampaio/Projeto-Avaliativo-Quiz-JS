@@ -337,9 +337,9 @@ main {
   counter-reset: posicao;
 }
 
-p.position:before {
-  content: counter(posicao) ". ";
-  counter-increment: posicao;
+li.position:before {
+  /* content: counter(posicao) ". ";
+  counter-increment: posicao; */
   font-weight: bold;
   font-size: var(--4x);
   padding: 0 var(--1x);
