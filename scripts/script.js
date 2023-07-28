@@ -61,8 +61,8 @@ function mostrarTema(values) {
   mainPart.style = "margin-top: var(--8x)";
   btnArea.style = "display: flex";
   btnReiniciar.style = "display: block";
-  btnConcluir.style = "display: block";
-  btnContinuar.style = "display: block";
+  // btnConcluir.style = "display: block";
+  // btnContinuar.style = "display: block";
   btnVoltar.style = "display: none";
   tituloTema.style = "display: block";
   alert.style.display = "none";
@@ -129,7 +129,7 @@ btnIniciar.addEventListener("click", () => {
     valores = entretenimento;
     tituloTema.innerText = "Entreterimento";
     mostrarTema(valores);
-    cronometro();    
+    cronometro();
   } else if (
     selectedTema === "artes" &&
     nome.value != "" &&
@@ -162,8 +162,6 @@ let segundos = 0;
 let milissegundos = 0;
 let pausar = false;
 let interval;
-
-
 
 console.log(pausar);
 
@@ -224,8 +222,8 @@ console.log({ btnArea });
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Continuar
 function BotaoContinuar() {
-  const teste = [nome.value,tituloTema.innerHTML, minutos, segundos];  // U ARE WORKING HERE
-  console.log(teste)
+  const teste = [nome.value, tituloTema.innerHTML, minutos, segundos]; // U ARE WORKING HERE
+  console.log(teste);
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
@@ -331,11 +329,13 @@ function playPause() {
 muteBtn.addEventListener("click", playPause);
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Checar
+//Botão Conluir e Checagem
 
+//Botão Concluir
 let validador = [];
 let respostas = [];
 let temaSelecionado;
+let contagemAcertos = 0;
 
 let validar0;
 let validar1;
@@ -347,11 +347,14 @@ let validar6;
 let validar7;
 let validar8;
 let validar9;
-let validar10;
 
 btnConcluir.addEventListener("click", (ev) => {
-  pausar = true;
+  //sair o botão concluir e colocar o continuar
+  btnConcluir.style.display = "none";
+  btnContinuar.style.display = "block";
+
   ev.preventDefault();
+  pausar = true;
   validador = [];
   respostas = [];
   temaSelecionado = valores;
@@ -365,10 +368,9 @@ btnConcluir.addEventListener("click", (ev) => {
   validar7 = document.querySelector('input[name="select7"]:checked').value;
   validar8 = document.querySelector('input[name="select8"]:checked').value;
   validar9 = document.querySelector('input[name="select9"]:checked').value;
-  validar10 = document.querySelector('input[name="select9"]:checked');
+  verificarRespostas();
   checarQuestoes(temaSelecionado);
 });
-
 
 function checarQuestoes(objeto) {
   for (let i = 0; i < objeto.length; i++) {
@@ -386,21 +388,81 @@ function checarQuestoes(objeto) {
   respostas.push(validar8);
   respostas.push(validar9);
   console.log(respostas);
-  console.log({ validar10 });
-  
-  
-  // minutosDados = minutos;
-  // segundosDados = segundos;  
-  
-  console.log(nome)
-  console.log(tituloTema)  
-  console.log(minutos);
-  console.log(segundos);
-  let dadosUsuario = [minutos, segundos]; 
-  console.log(dadosUsuario);
-  
-};
 
+  // console.log(nome);
+  // console.log(tituloTema);
+  // console.log(minutos);
+  // console.log(segundos);
+  // let dadosUsuario = [minutos, segundos];
+  // console.log(dadosUsuario);
 
+  for (let i = 0; i < respostas.length; i++) {
+    if (respostas[i] == validador[i]) {
+      contagemAcertos++;
+    }
+  }
+  console.log(`acertos: ${contagemAcertos}`);
+}
 
+//Checagem
+let totalQuestoes = 10;
+let questoesRespondidas = 0;
 
+function verificarInputsMarcados() {
+  const inputs = document.querySelectorAll('input[type="radio"]');
+  let contadorMarcados = 0;
+
+  inputs.forEach((input) => {
+    if (input.checked) {
+      contadorMarcados++;
+    }
+  });
+
+  if (contadorMarcados === totalQuestoes) {
+    btnConcluir.style.display = "block";
+  } else {
+    btnConcluir.style.display = "none";
+  }
+}
+
+function incrementarQuestoesRespondidas() {
+  questoesRespondidas++;
+
+  if (questoesRespondidas === totalQuestoes) {
+    btnConcluir.style.display = "block";
+  }
+}
+
+listaPerguntas.addEventListener("change", () => {
+  verificarInputsMarcados();
+});
+
+document.querySelectorAll('input[type="radio"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    incrementarQuestoesRespondidas();
+  });
+});
+
+//Pintura de certo e errado
+function verificarRespostas() {
+  const perguntasContainer = document.querySelectorAll(".perguntas-container");
+
+  for (let i = 0; i < perguntasContainer.length; i++) {
+    const inputSelecionado = perguntasContainer[i].querySelector(
+      'input[name="select' + i + '"]:checked'
+    );
+
+    if (inputSelecionado) {
+      const respostaSelecionada = inputSelecionado.value;
+      const respostaCorreta = valores[i].correctAlternativa;
+
+      if (respostaSelecionada == respostaCorreta) {
+        perguntasContainer[i].style.border = "1px solid #55ce77";
+        perguntasContainer[i].style.backgroundColor = "#a4ffbe";
+      } else {
+        perguntasContainer[i].style.border = "1px solid #d36980";
+        perguntasContainer[i].style.backgroundColor = "#ffa4b8";
+      }
+    }
+  }
+}
