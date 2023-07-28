@@ -47,6 +47,9 @@ const clMilissegundos = document.querySelector(".milliseconds");
 //alerta
 const alert = document.getElementById("alert");
 
+// população container-temas
+
+
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Iniciar
 tema.addEventListener("change", () => {
@@ -223,14 +226,53 @@ console.log({ btnArea });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Botão Continuar
+const ordemPessoas1 = document.getElementById("position1");
+const ordemPessoas2 = document.getElementById("position2");
+const ordemPessoas3 = document.getElementById("position3");
+
 function BotaoContinuar() {
-  const teste = [nome.value,tituloTema.innerHTML, minutos, segundos];  // U ARE WORKING HERE
-  console.log(teste)
+  const dadosUser = [nome.value,tituloTema.innerHTML, minutos, segundos];  
+  console.log(dadosUser)
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
 
+  console.log(ordemPessoas1);
   console.log(btnContinuar);
+  popularContTemas()
+}
+
+function popularContTemas(valores) {  //////////////////////////////////// HERE
+  console.log(tituloTema)
+  for(let i = 0; i < 5; i++) {
+    if (tituloTema.innerHTML == "Entreterimento") {
+    ordemPessoas1.innerHTML = `
+      <li class="position">João</li> 
+      <li class="position">Maria</li> 
+      <li class="position">Jose</li> 
+      <li class="position">Vitor</li> 
+      <li class="position">${nome.value}</li>      
+    `;
+    } else if(tituloTema.innerHTML == "Artes") {
+      ordemPessoas2.innerHTML = `
+      <li class="position">João</li> 
+      <li class="position">Maria</li> 
+      <li class="position">Jose</li> 
+      <li class="position">Vitor</li> 
+      <li class="position">${nome.value}</li>       
+    `;
+    } else if(tituloTema.innerHTML == "Esportes") {
+      ordemPessoas3.innerHTML = `
+      <li class="position">João</li> 
+      <li class="position">Maria</li> 
+      <li class="position">Jose</li> 
+      <li class="position">Vitor</li> 
+      <li class="position">${nome.value}</li>       
+    `;
+    }
+}
+  
+  
 }
 
 btnContinuar.addEventListener("click", () => {
@@ -397,8 +439,7 @@ function checarQuestoes(objeto) {
   console.log(minutos);
   console.log(segundos);
   let dadosUsuario = [minutos, segundos]; 
-  console.log(dadosUsuario);
-  
+  console.log(dadosUsuario);  
 };
 
 
