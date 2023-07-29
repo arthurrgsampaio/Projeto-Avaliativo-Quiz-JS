@@ -230,6 +230,14 @@ const ordemPessoas2 = document.getElementById("position2");
 const ordemPessoas3 = document.getElementById("position3");
 const tabelaCorpo = document.getElementById('tabelaCorpo');
 
+const dataAtual = new Date();
+
+const ano = dataAtual.getFullYear();
+const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
+const dia = String(dataAtual.getDate()).padStart(2, '0');
+const dataFormatada = `${ano}-${mes}-${dia}`;
+
+
 function BotaoContinuar() {  
 
   divTimer.style.display = "none";
@@ -239,10 +247,10 @@ function BotaoContinuar() {
   pessoas.push({
     nome: nome.value,
     tema: tituloTema.innerHTML,
-    minutos: minutos,
-    segundos: segundos,
-    data: 'undefined',
-    pontuacao: contagemAcertos           // parseInt(pontuacao)
+    minutos: tempo(minutos),
+    segundos: tempo(segundos),
+    data: dataFormatada,
+    pontuacao: contagemAcertos          
     
   });  
   
@@ -262,7 +270,7 @@ function organizarPessoas(pessoas) {
         return tempoA - tempoB;
       }
     } else {
-      return b.pontuacao - a.pontuacao; // Ordem decrescente por pontuação
+      return b.pontuacao - a.pontuacao; 
     }
   });
 
@@ -282,7 +290,7 @@ function popularTabela() {
       <td>${pessoa.tema}</td>
       <td>${pessoa.minutos}:${pessoa.segundos}</td>
       <td>${pessoa.data}</td>
-      <td>${pessoa.pontuacao}</td>
+      <td>${pessoa.pontuacao}/10</td>
     `;
     tabelaCorpo.appendChild(row);
   });
@@ -291,7 +299,7 @@ function popularTabela() {
   popularContTemas();
 }
 
-function popularContTemas(valores) {  //////////////////////////////////// HERE
+function popularContTemas(valores) {  
   console.log(tituloTema)
   for(let i = 0; i < 5; i++) {
     if (tituloTema.innerHTML == "Entreterimento") {
@@ -466,6 +474,7 @@ btnConcluir.addEventListener("click", (ev) => {
 });
 
 function checarQuestoes(objeto) {
+  contagemAcertos = 0;
   for (let i = 0; i < objeto.length; i++) {
     validador.push(objeto[i].correctAlternativa);
   }
