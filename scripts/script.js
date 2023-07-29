@@ -3,6 +3,7 @@
 import { entretenimento } from "./entretenimento.js";
 import { artes } from "./artes.js";
 import { esportes } from "./esportes.js";
+import { pessoas } from "./pessoas.js";
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Declaração das variáveis
@@ -227,19 +228,67 @@ console.log({ btnArea });
 const ordemPessoas1 = document.getElementById("position1");
 const ordemPessoas2 = document.getElementById("position2");
 const ordemPessoas3 = document.getElementById("position3");
+const tabelaCorpo = document.getElementById('tabelaCorpo');
 
-function BotaoContinuar() {
-
-  const dadosUser = [nome.value,tituloTema.innerHTML, minutos, segundos];  
-  console.log(dadosUser)
+function BotaoContinuar() {  
 
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
 
-  console.log(ordemPessoas1);
-  console.log(btnContinuar);
-  popularContTemas()
+  pessoas.push({
+    nome: nome.value,
+    tema: tituloTema.innerHTML,
+    minutos: minutos,
+    segundos: segundos,
+    data: 'undefined',
+    pontuacao: contagemAcertos           // parseInt(pontuacao)
+    
+  });  
+  
+  popularContTemas();
+  organizarPessoas(pessoas);
+}
+
+function organizarPessoas(pessoas) {
+  pessoas.sort((a, b) => {
+    if (a.pontuacao === b.pontuacao) {
+      const tempoA = a.minutos * 60 + a.segundos;
+      const tempoB = b.minutos * 60 + b.segundos;
+
+      if (tempoA === tempoB) {
+        return new Date(a.data) - new Date(b.data);
+      } else {
+        return tempoA - tempoB;
+      }
+    } else {
+      return b.pontuacao - a.pontuacao; // Ordem decrescente por pontuação
+    }
+  });
+
+  popularTabela();
+}
+
+function popularTabela() {
+  // Limpa a tabela atual antes de popular novamente
+  while (tabelaCorpo.firstChild) {
+    tabelaCorpo.removeChild(tabelaCorpo.firstChild);
+  }
+
+  pessoas.forEach((pessoa) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${pessoa.nome}</td>
+      <td>${pessoa.tema}</td>
+      <td>${pessoa.minutos}:${pessoa.segundos}</td>
+      <td>${pessoa.data}</td>
+      <td>${pessoa.pontuacao}</td>
+    `;
+    tabelaCorpo.appendChild(row);
+  });
+
+  console.log(pessoas);
+  popularContTemas();
 }
 
 function popularContTemas(valores) {  //////////////////////////////////// HERE
@@ -283,7 +332,7 @@ btnContinuar.addEventListener("click", () => {
   divResultados.style.display = "flex";
   divMedia.style.display = "flex";
   divConTemas.style.display = "flex";
-  BotaoContinuar();
+  BotaoContinuar();  
 });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
