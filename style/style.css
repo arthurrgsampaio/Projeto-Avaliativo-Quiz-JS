@@ -299,13 +299,13 @@ main {
   gap: var(--10x);
 }
 
-.media-acertos {
+#media-acertos {
   font-size: var(--5x);
   color: var(--cor-contador-acertos);
   font-weight: bold;
 }
 
-.media-erros {
+#media-erros {
   font-size: var(--5x);
   color: var(--cor-contador-erros);
   font-weight: bold;

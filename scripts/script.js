@@ -497,6 +497,7 @@ function checarQuestoes(objeto) {
     }
   }
   console.log(`acertos: ${contagemAcertos}`);
+  notificarAcertos();
 }
 
 //Checagem
@@ -561,3 +562,52 @@ function verificarRespostas() {
     }
   }
 }
+
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Médias de acertos e erros
+
+let totalAcertos = 0;
+let qtdPartidasFinalizadas = 0;
+let chamada = 1;
+let mediaAcertos = 0;
+let mediaErros = 0;
+const PONTUACAO_MAXIMA = 10;
+
+function recebePontuacao(pessoas) {
+  // Somatória da quantidade de acertos por pessoa e soma a quantidade de partidas realizadas, que estão no array pessoas.
+  for (let pessoa of pessoas) {
+    totalAcertos += pessoa.pontuacao;
+    qtdPartidasFinalizadas++;
+  }
+  return totalAcertos;
+}
+
+function calcularMedias(contagemAcertos) {
+  // Somatória dos acertos de todas as partidas realizadas e posteriormente realiza o cálculo das médias de acertos e erros.
+  totalAcertos += contagemAcertos;
+  qtdPartidasFinalizadas++;
+
+  mediaAcertos = (totalAcertos / qtdPartidasFinalizadas);
+  mediaErros = (PONTUACAO_MAXIMA - mediaAcertos);
+
+  document.getElementById("media-acertos").innerHTML = `<p>Média de acertos: ${mediaAcertos.toFixed(1).replace(".",",")}</p>`;
+  document.getElementById("media-erros").innerHTML = `<p>Média de erros: ${mediaErros.toFixed(1).replace(".",",")}</p>`;
+}
+
+const contagemAtualizadaAcertos = new Event('contagemAtualizada');
+function notificarAcertos() {
+  // notifica que houve uma atualização de contagemAcertos da função checarQuestoes().
+  document.dispatchEvent(contagemAtualizadaAcertos);
+}
+
+document.addEventListener('contagemAtualizada', () => {
+  // O código dentro desta função será executado quando a contagemAcertos da partida for atualizada
+  if (chamada === 1) {    // Será executado somente na primeira partida
+    totalAcertos = recebePontuacao(pessoas);
+    calcularMedias(contagemAcertos);
+    chamada++;
+  } else {    // Será executado nas partidas seguintes
+    calcularMedias(contagemAcertos);
+  }
+});
