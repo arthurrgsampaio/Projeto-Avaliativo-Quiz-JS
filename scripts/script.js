@@ -611,3 +611,5 @@ document.addEventListener('contagemAtualizada', () => {
     calcularMedias(contagemAcertos);
   }
 });
+
+//.
