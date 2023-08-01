@@ -4,7 +4,7 @@ export const pessoas = [
     tema: 'Artes',
     minutos: '02',
     segundos: '39',
-    data: '2023-07-15',
+    data: '15-07-2023 19:03',
     pontuacao: 8
     },
     {
@@ -12,7 +12,7 @@ export const pessoas = [
     tema: 'Artes',
     minutos: '45',
     segundos: '00',
-    data: '2023-05-20',
+    data: '20-05-2023 06:11',
     pontuacao: 6
     },
     {
@@ -20,7 +20,7 @@ export const pessoas = [
     tema: 'Esportes',
     minutos: '06',
     segundos: '25',
-    data: '2023-07-12',
+    data: '12-07-2023 08:25',
     pontuacao: 5
     },
     {
@@ -28,7 +28,7 @@ export const pessoas = [
     tema: 'Entretenimento',
     minutos: '01',
     segundos: '12',
-    data: '2023-07-25',
+    data: '22-01-2022  12:30',
     pontuacao: 4
     }
 ];
