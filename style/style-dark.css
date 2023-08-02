@@ -117,15 +117,15 @@ main {
 
 .init-container {
   width: 600px;
-  background-color: var(--primaria);
+  background-color: var(--contraste-light);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ededede0;
+  border: 1px solid #627dd6;
   border-radius: var(--8x);
   padding: var(--10x) 0;
-  box-shadow: 0px 0px 50px 1px var(--primaria);
+  box-shadow: 0px 0px 50px 1px var(--contraste-light);
 }
 
 .init-container h2,
@@ -287,8 +287,8 @@ main {
 #tabela-resultados {
   min-width: 800px;
   max-width: 900px;
-  background-color: var(--primaria);
-  border: 1px solid var(--contraste-light);
+  background-color: var(--contraste-light);
+  border: 1px solid var(--contraste-dark);
   border-radius: var(--8x);
   padding: var(--4x);
   color: var(--texto-dark);
