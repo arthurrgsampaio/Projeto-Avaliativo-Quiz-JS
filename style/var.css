@@ -16,8 +16,9 @@
   --sombra-light: #ededed; /* Sombra clara */
   --sombra-dark: #121212; /* Sombra escura */
 
-  --cor-contador-erros: #e91515; /* Modo light e dark*/
-  --cor-contador-acertos: #069b06; /* Modo light e dark */
+  --cor-vermelha: #d36980; /* Modo light e dark*/
+  --cor-verde: #55ce77; /* Modo light e dark */
+  --cor-roxa: #ab90ef; /* Modo light e dark */
 
   --1x: 0.25rem; /* 4px */
   --2x: 0.5rem; /* 8px */

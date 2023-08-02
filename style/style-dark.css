@@ -282,25 +282,28 @@ main {
 .resultados {
   justify-content: center;
   display: none;
-  
 }
 
 #tabela-resultados {
-  width: 800px;
+  min-width: 800px;
+  max-width: 900px;
   background-color: var(--primaria);
   border: 1px solid var(--contraste-light);
-  border: 1px solid #ededede0;
   border-radius: var(--8x);
   padding: var(--4x);
+  color: var(--texto-dark);
 }
 
-#tabela-resultados .linha-head{
-  font-size: var(--6x);
+#tabela-resultados .linha-head {
+  font-size: var(--5x);
 }
 
 #tabela-resultados td {
   text-align: center;
   font-size: var(--5x);
+  padding: 0 6px;
+  overflow-wrap: break-word;
+  max-width: 300px;
 }
 
 .media {
@@ -310,13 +313,13 @@ main {
 
 #media-acertos {
   font-size: var(--5x);
-  color: var(--cor-contador-acertos);
+  color: var(--cor-verde);
   font-weight: bold;
 }
 
 #media-erros {
   font-size: var(--5x);
-  color: var(--cor-contador-erros);
+  color: var(--cor-vermelha);
   font-weight: bold;
 }
 
@@ -327,20 +330,26 @@ main {
   color: var(--texto-dark);
 }
 
-#entretenimento h2, #artes h2, #esportes h2 {
+#entretenimento h2,
+#artes h2,
+#esportes h2 {
   font-size: var(--6x);
+  text-align: center;
 }
 
-#entretenimento {
+#entretenimento,
+#artes,
+#esportes {
+  max-height: 150px;
   flex: 2;
   margin: 0 var(--5x);
   font-size: var(--5x);
-}
-
-#artes, #esportes {
-  flex: 2;
-  margin: 0 var(--5x);
-  font-size: var(--5x);
+  width: 260px;
+  border: 1px solid var(--contraste-dark);
+  border-radius: var(--3x);
+  padding: var(--2x) var(--7x);
+  overflow-wrap: break-word;
+  overflow-y: scroll;
 }
 
 .ranking {
@@ -391,15 +400,15 @@ p.position:before {
 }
 
 #reiniciar:hover {
-  background-color: #d36980;
+  background-color: var(--cor-vermelha);
 }
 
 #concluir:hover {
-  background-color: #55ce77;
+  background-color: var(--cor-verde);
 }
 
 #continuar:hover {
-  background-color: #ab90ef;
+  background-color: var(--cor-roxa);
 }
 
 #voltar:hover {
