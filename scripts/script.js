@@ -126,12 +126,12 @@ document.addEventListener("keydown", function (e) {
 btnIniciar.addEventListener("click", () => {
   console.log(nome.value);
   if (
-    selectedTema === "entreterimento" &&
+    selectedTema === "entretenimento" &&
     nome.value != "" &&
     tema.value != "0"
   ) {
     valores = entretenimento;
-    tituloTema.innerText = "Entreterimento";
+    tituloTema.innerText = "Entretenimento";
     mostrarTema(valores);
     cronometro();
   } else if (
@@ -235,9 +235,7 @@ const dataAtual = new Date();
 const ano = dataAtual.getFullYear();
 const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
 const dia = String(dataAtual.getDate()).padStart(2, '0');
-const hora = String(dataAtual.getHours()).padStart(2, '0');
-const minuto = String(dataAtual.getMinutes()).padStart(2, '0');
-const dataFormatada = `${dia}-${mes}-${ano} ${hora}:${minuto}`;
+const dataFormatada = `${ano}-${mes}-${dia}`;
 
 
 function BotaoContinuar() {  
@@ -257,26 +255,8 @@ function BotaoContinuar() {
   });  
   
   popularContTemas();
-  organizarPessoas(pessoas);
-}
+  popularTabela(pessoas);
 
-function organizarPessoas(pessoas) {
-  pessoas.sort((a, b) => {
-    if (a.pontuacao === b.pontuacao) {
-      const tempoA = a.minutos * 60 + a.segundos;
-      const tempoB = b.minutos * 60 + b.segundos;
-
-      if (tempoA === tempoB) {
-        return new Date(a.data) - new Date(b.data);
-      } else {
-        return tempoA - tempoB;
-      }
-    } else {
-      return b.pontuacao - a.pontuacao; 
-    }
-  });
-
-  popularTabela();
 }
 
 function popularTabela() {
@@ -298,40 +278,29 @@ function popularTabela() {
   });
 
   console.log(pessoas);
-  popularContTemas();
 }
 
-function popularContTemas(valores) {  
-  console.log(tituloTema)
-  for(let i = 0; i < 5; i++) {
-    if (tituloTema.innerHTML == "Entreterimento") {
-    ordemPessoas1.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>      
-    `;
-    } else if(tituloTema.innerHTML == "Artes") {
-      ordemPessoas2.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>       
-    `;
-    } else if(tituloTema.innerHTML == "Esportes") {
-      ordemPessoas3.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>       
-    `;
-    }
+function popularContTemas() {
+
+  
+  const arrayPessoas = pessoas.slice();
+  function sortfunction(a, b){
+    return b.pontuacao - a.pontuacao; //faz com que o array seja ordenado numericamente e de ordem decrescente.
 }
-  
-  
+  arrayPessoas.sort(sortfunction); 
+  ordemPessoas1.innerHTML = "";
+  ordemPessoas2.innerHTML = "";
+  ordemPessoas3.innerHTML = "";
+  for(let pessoa of arrayPessoas) {
+    const inserirPosicao = `<li class="position">${pessoa.nome} - ${pessoa.pontuacao}/10</li>`;
+    if (pessoa.tema === "Entretenimento") {
+    ordemPessoas1.innerHTML += inserirPosicao;
+    } else if(pessoa.tema === "Artes") {
+      ordemPessoas2.innerHTML += inserirPosicao;
+    } else if(pessoa.tema === "Esportes") {
+      ordemPessoas3.innerHTML += inserirPosicao;
+    }
+  }
 }
 
 btnContinuar.addEventListener("click", () => {
