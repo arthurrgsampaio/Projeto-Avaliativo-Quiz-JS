@@ -238,7 +238,7 @@ const dia = String(dataAtual.getDate()).padStart(2, '0');
 const dataFormatada = `${ano}-${mes}-${dia}`;
 
 
-function BotaoContinuar() {  
+function BotaoContinuar() {
 
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
@@ -250,16 +250,22 @@ function BotaoContinuar() {
     minutos: tempo(minutos),
     segundos: tempo(segundos),
     data: dataFormatada,
-    pontuacao: contagemAcertos          
-    
-  });  
-  
-  popularContTemas();
-  popularTabela(pessoas);
+    pontuacao: contagemAcertos
+  });
 
+  // popularContTemas();
+  organizarPessoas(pessoas);
+}
+
+function organizarPessoas(pessoas) {
+  pessoas.sort((a, b) => {
+    if (a.pontuacao === b.pontuacao) {
+      const tempoA = a.minutos * 60 + a.segundos;
+      const tempoB = b.minutos * 60 + b.segundos;
 }
 
 function popularTabela() {
+  popularContTemas();
   // Limpa a tabela atual antes de popular novamente
   while (tabelaCorpo.firstChild) {
     tabelaCorpo.removeChild(tabelaCorpo.firstChild);
@@ -281,13 +287,11 @@ function popularTabela() {
 }
 
 function popularContTemas() {
-
-  
   const arrayPessoas = pessoas.slice();
   function sortfunction(a, b){
     return b.pontuacao - a.pontuacao; //faz com que o array seja ordenado numericamente e de ordem decrescente.
 }
-  arrayPessoas.sort(sortfunction); 
+  pessoas.sort(sortfunction); 
   ordemPessoas1.innerHTML = "";
   ordemPessoas2.innerHTML = "";
   ordemPessoas3.innerHTML = "";
@@ -311,7 +315,7 @@ btnContinuar.addEventListener("click", () => {
   divResultados.style.display = "flex";
   divMedia.style.display = "flex";
   divConTemas.style.display = "flex";
-  BotaoContinuar();  
+  BotaoContinuar();
 });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
