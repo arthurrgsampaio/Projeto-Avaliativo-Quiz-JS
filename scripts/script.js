@@ -185,6 +185,7 @@ function BotaoReiniciar() {
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
   btnArea.style.display = "none";
+  btnConcluir.style.display = "none";
   containerInicial.style.display = "flex";
   tema.value = "0";
   selectedTema = "";
@@ -203,7 +204,6 @@ function checarQuestoes(objeto) {
   for (let i = 0; i < objeto.length; i++) {
     validador.push(objeto[i].correctAlternativa);
   }
-  console.log(validador);
   respostas.push(validar0);
   respostas.push(validar1);
   respostas.push(validar2);
@@ -214,14 +214,12 @@ function checarQuestoes(objeto) {
   respostas.push(validar7);
   respostas.push(validar8);
   respostas.push(validar9);
-  console.log(respostas);
 
   for (let i = 0; i < respostas.length; i++) {
     if (respostas[i] == validador[i]) {
       contagemAcertos++;
     }
   }
-  console.log(`acertos: ${contagemAcertos}`);
   notificarAcertos();
 }
 
@@ -247,7 +245,6 @@ function BotaoContinuar() {
     data: dataFormatada,
     pontuacao: contagemAcertos
   });
-  // popularContTemas();
   organizarPessoas(pessoas);
 }
 
@@ -315,7 +312,6 @@ function organizarPessoas(pessoas) {
 
 function popularTabela() {
   popularContTemas();
-  // Limpa a tabela atual antes de popular novamente
   while (tabelaCorpo.firstChild) {
     tabelaCorpo.removeChild(tabelaCorpo.firstChild);
   }
@@ -331,14 +327,12 @@ function popularTabela() {
     `;
     tabelaCorpo.appendChild(row);
   });
-
-  console.log(pessoas);
 }
 
 function popularContTemas() {
   const arrayPessoas = pessoas.slice();
   function sortfunction(a, b){
-    return b.pontuacao - a.pontuacao; //faz com que o array seja ordenado numericamente e de ordem decrescente.
+    return b.pontuacao - a.pontuacao; 
 }
   pessoas.sort(sortfunction); 
   ordemPessoas1.innerHTML = "";
@@ -357,7 +351,6 @@ function popularContTemas() {
 }
 
 function recebePontuacao(pessoas) {
-  // Somatória da quantidade de acertos por pessoa e soma a quantidade de partidas realizadas, que estão no array pessoas.
   for (let pessoa of pessoas) {
     totalAcertos += pessoa.pontuacao;
     qtdPartidasFinalizadas++;
@@ -366,7 +359,6 @@ function recebePontuacao(pessoas) {
 }
 
 function calcularMedias(contagemAcertos) {
-  // Somatória dos acertos de todas as partidas realizadas e posteriormente realiza o cálculo das médias de acertos e erros.
   totalAcertos += contagemAcertos;
   qtdPartidasFinalizadas++;
 
@@ -378,7 +370,6 @@ function calcularMedias(contagemAcertos) {
 }
 
 function notificarAcertos() {
-  // notifica que houve uma atualização de contagemAcertos da função checarQuestoes().
   document.dispatchEvent(contagemAtualizadaAcertos);
 }
 
@@ -404,7 +395,6 @@ function BotaoVoltar() {
   nome.value = "";
   tema.value = "0";
   selectedTema = "";
-  console.log(btnReiniciar);
   dataAtual.value = ""
 }
 
@@ -431,7 +421,6 @@ document.addEventListener("keydown", function (e) {
 });
 
 btnIniciar.addEventListener("click", () => {
-  console.log(nome.value);
   if (
     selectedTema === "entretenimento" &&
     nome.value != "" &&
@@ -460,7 +449,6 @@ btnIniciar.addEventListener("click", () => {
     mostrarTema(valores);
     cronometro();
   } else {
-    console.log(`Não funcionou...`);
     alerta();
   }
 });
@@ -480,7 +468,6 @@ document.querySelectorAll('input[type="radio"]').forEach((input) => {
 });
 
 btnConcluir.addEventListener("click", (ev) => {
-  //sair o botão concluir e colocar o continuar
   btnConcluir.style.display = "none";
   btnContinuar.style.display = "block";
 
@@ -504,12 +491,11 @@ btnConcluir.addEventListener("click", (ev) => {
 });
 
 document.addEventListener('contagemAtualizada', () => {
-  // O código dentro desta função será executado quando a contagemAcertos da partida for atualizada
-  if (chamada === 1) {    // Será executado somente na primeira partida
+  if (chamada === 1) { 
     totalAcertos = recebePontuacao(pessoas);
     calcularMedias(contagemAcertos);
     chamada++;
-  } else {    // Será executado nas partidas seguintes
+  } else { 
     calcularMedias(contagemAcertos);
   }
 });
