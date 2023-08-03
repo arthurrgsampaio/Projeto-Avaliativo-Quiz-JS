@@ -1,34 +1,34 @@
 :root {
-  --primaria: #a8c3dc; /* Cor primária a ser utilziada */
+  --primaria: #a8c3dc; 
 
-  --secundaria-light: #dce5ef; /* Cor secundária a ser utilizada */
-  --contraste-light: #4e65b1; /* Cor utilizada como contraste */
+  --secundaria-light: #dce5ef;
+  --contraste-light: #4e65b1;
 
-  --secundaria-dark: #101923; /* Cor secundária a ser utilizada */
-  --contraste-dark: #95a3d0; /* Cor utilizada como contraste */
+  --secundaria-dark: #101923;
+  --contraste-dark: #95a3d0;
 
-  --texto-light: #050505; /* Texto para tela clara */
-  --texto-dark: #fafafa; /* Texto para tela escura */
+  --texto-light: #050505;
+  --texto-dark: #fafafa;
 
-  --background-light: #ededed; /* Background claro */
-  --background-dark: #111111; /* Background escuro*/
+  --background-light: #ededed;
+  --background-dark: #111111;
 
-  --sombra-light: #ededed; /* Sombra clara */
-  --sombra-dark: #121212; /* Sombra escura */
+  --sombra-light: #ededed;
+  --sombra-dark: #121212;
 
-  --cor-vermelha: #d36980; /* Modo light e dark*/
-  --cor-verde: #55ce77; /* Modo light e dark */
-  --cor-roxa: #ab90ef; /* Modo light e dark */
+  --cor-vermelha: #d36980;
+  --cor-verde: #55ce77;
+  --cor-roxa: #ab90ef;
 
-  --1x: 0.25rem; /* 4px */
-  --2x: 0.5rem; /* 8px */
-  --3x: 0.75rem; /* 12px */
-  --4x: 1rem; /* 16px */
-  --5x: 1.25rem; /* 20px */
-  --6x: 1.5rem; /* 24px */
-  --7x: 1.75rem; /* 28px */
-  --8x: 2rem; /* 32px */
-  --9x: 2.25rem; /* 36px */
-  --10x: 2.5rem; /* 40px */
-  --20x: 5rem; /* 80px */
+  --1x: 0.25rem;
+  --2x: 0.5rem;
+  --3x: 0.75rem;
+  --4x: 1rem;
+  --5x: 1.25rem;
+  --6x: 1.5rem;
+  --7x: 1.75rem;
+  --8x: 2rem;
+  --9x: 2.25rem;
+  --10x: 2.5rem;
+  --20x: 5rem;
 }

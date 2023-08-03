@@ -1,61 +1,93 @@
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Imports
 import { entretenimento } from "./entretenimento.js";
 import { artes } from "./artes.js";
 import { esportes } from "./esportes.js";
 import { pessoas } from "./pessoas.js";
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Declaração das variáveis
-// Colocar css na main
 const mainPart = document.querySelector("main");
-
-// Guarda o nome da pessoa na constante
 const nome = document.getElementById("name");
-
-// Guarda o tema escolhido pela pessoa
 const tema = document.getElementById("temas");
-let selectedTema;
-let valores = [];
-
-// Aplica JS no botão de iniciar
 const btnIniciar = document.getElementById("btn-iniciar");
-
-// Pega os atributos necessários da lista
-const listaPerguntas = document.getElementById("lista-perguntas");
 const containerInicial = document.querySelector(".init-container");
+const alert = document.getElementById("alert");
+const divTimer = document.getElementById("timer");
+const clMinutos = document.querySelector(".minutes");
+const clSegundos = document.querySelector(".seconds");
 const tituloTema = document.querySelector(".titulo-tema");
 const perguntasContainer = document.querySelector(".perguntas");
-
-// Pegar os botões no final das perguntas
+const listaPerguntas = document.getElementById("lista-perguntas");
+const divResultados = document.querySelector(".resultados");
+const divMedia = document.querySelector(".media");
+const divConTemas = document.querySelector(".container-temas");
 const btnArea = document.querySelector(".btn-end");
 const btnReiniciar = document.querySelector("#reiniciar");
 const btnConcluir = document.querySelector("#concluir");
 const btnContinuar = document.querySelector("#continuar");
 const btnVoltar = document.querySelector("#voltar");
+const ordemPessoas1 = document.getElementById("position1");
+const ordemPessoas2 = document.getElementById("position2");
+const ordemPessoas3 = document.getElementById("position3");
+const tabelaCorpo = document.getElementById('tabelaCorpo');
+const linkCss = document.querySelector("#link-css");
+const darkMode = document.getElementById("alternarModo");
+const audio = document.getElementById("audioPlay");
+const musicOn = document.getElementById("musicON");
+const musicOff = document.getElementById("musicOFF");
+const muteBtn = document.getElementById("audioMute");
+const seta = document.getElementById("seta");
+const PONTUACAO_MAXIMA = 10;
+const contagemAtualizadaAcertos = new Event('contagemAtualizada');
 
-// botões perguntas
-const divResultados = document.querySelector(".resultados");
-const divMedia = document.querySelector(".media");
-const divConTemas = document.querySelector(".container-temas");
+let selectedTema;
+let valores = [];
+let minutos = 0;
+let segundos = 0;
+let milissegundos = 0;
+let pausar = false;
+let interval;
+let counter = 1;
+let validador = [];
+let respostas = [];
+let temaSelecionado;
+let contagemAcertos = 0;
+let validar0;
+let validar1;
+let validar2;
+let validar3;
+let validar4;
+let validar5;
+let validar6;
+let validar7;
+let validar8;
+let validar9;
+let totalQuestoes = 10;
+let questoesRespondidas = 0;
+let totalAcertos = 0;
+let qtdPartidasFinalizadas = 0;
+let chamada = 1;
+let mediaAcertos = 0;
+let mediaErros = 0;
 
-// timer
-const divTimer = document.getElementById("timer");
-const clMinutos = document.querySelector(".minutes");
-const clSegundos = document.querySelector(".seconds");
-const clMilissegundos = document.querySelector(".milliseconds");
+function playPause() {
+  if (audio.paused) {
+    audio.play();
+    musicOn.style.display = "block";
+    musicOff.style.display = "none";
+    seta.style.display = "none";
+  } else {
+    audio.pause();
+    musicOn.style.display = "none";
+    musicOff.style.display = "block";
+    seta.style.display = "none";
+  }
+}
 
-//alerta
-const alert = document.getElementById("alert");
-
-// população container-temas
-
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Botão Iniciar
-tema.addEventListener("change", () => {
-  selectedTema = tema.value;
-});
+function alternateMode(valor) {
+  if (valor == 0) {
+    linkCss.href = "./style/style-dark.css";
+  } else if (valor == 1) {
+    linkCss.href = "./style/style.css";
+  }
+}
 
 function mostrarTema(values) {
   listaPerguntas.innerHTML = "";
@@ -65,8 +97,6 @@ function mostrarTema(values) {
   mainPart.style = "margin-top: var(--8x)";
   btnArea.style = "display: flex";
   btnReiniciar.style = "display: block";
-  // btnConcluir.style = "display: block";
-  // btnContinuar.style = "display: block";
   btnVoltar.style = "display: none";
   tituloTema.style = "display: block";
   alert.style.display = "none";
@@ -117,58 +147,6 @@ function alerta() {
   }, 4300);
 }
 
-document.addEventListener("keydown", function (e) {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-  }
-});
-
-btnIniciar.addEventListener("click", () => {
-  console.log(nome.value);
-  if (
-    selectedTema === "entretenimento" &&
-    nome.value != "" &&
-    tema.value != "0"
-  ) {
-    valores = entretenimento;
-    tituloTema.innerText = "Entretenimento";
-    mostrarTema(valores);
-    cronometro();
-  } else if (
-    selectedTema === "artes" &&
-    nome.value != "" &&
-    tema.value != "0"
-  ) {
-    valores = artes;
-    tituloTema.innerText = "Artes";
-    mostrarTema(valores);
-    cronometro();
-  } else if (
-    selectedTema === "esportes" &&
-    nome.value != "" &&
-    tema.value != "0"
-  ) {
-    valores = esportes;
-    tituloTema.innerText = "Esportes";
-    mostrarTema(valores);
-    cronometro();
-  } else {
-    console.log(`Não funcionou...`);
-    alerta();
-  }
-});
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Cronometro
-
-let minutos = 0;
-let segundos = 0;
-let milissegundos = 0;
-let pausar = false;
-let interval;
-
-console.log(pausar);
-
 function cronometro() {
   divTimer.style.display = "flex";
 
@@ -192,12 +170,6 @@ function cronometro() {
   }, 10);
 }
 
-function tempo(time) {
-  return time < 10 ? `0${time}` : time;
-}
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Botão Reiniciar
 function BotaoReiniciar() {
   clearInterval(interval);
   milissegundos = 0;
@@ -218,17 +190,40 @@ function BotaoReiniciar() {
   selectedTema = "";
 }
 
-btnReiniciar.addEventListener("click", () => {
-  BotaoReiniciar();
-});
-console.log({ btnArea });
+function incrementarQuestoesRespondidas() {
+  questoesRespondidas++;
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Botão Continuar
-const ordemPessoas1 = document.getElementById("position1");
-const ordemPessoas2 = document.getElementById("position2");
-const ordemPessoas3 = document.getElementById("position3");
-const tabelaCorpo = document.getElementById('tabelaCorpo');
+  if (questoesRespondidas === totalQuestoes) {
+    btnConcluir.style.display = "block";
+  }
+}
+
+function checarQuestoes(objeto) {
+  contagemAcertos = 0;
+  for (let i = 0; i < objeto.length; i++) {
+    validador.push(objeto[i].correctAlternativa);
+  }
+  console.log(validador);
+  respostas.push(validar0);
+  respostas.push(validar1);
+  respostas.push(validar2);
+  respostas.push(validar3);
+  respostas.push(validar4);
+  respostas.push(validar5);
+  respostas.push(validar6);
+  respostas.push(validar7);
+  respostas.push(validar8);
+  respostas.push(validar9);
+  console.log(respostas);
+
+  for (let i = 0; i < respostas.length; i++) {
+    if (respostas[i] == validador[i]) {
+      contagemAcertos++;
+    }
+  }
+  console.log(`acertos: ${contagemAcertos}`);
+  notificarAcertos();
+}
 
 function BotaoContinuar() {
   const dataAtual = new Date();
@@ -254,6 +249,50 @@ function BotaoContinuar() {
   });
   // popularContTemas();
   organizarPessoas(pessoas);
+}
+
+function tempo(time) {
+  return time < 10 ? `0${time}` : time;
+}
+
+function verificarInputsMarcados() {
+  const inputs = document.querySelectorAll('input[type="radio"]');
+  let contadorMarcados = 0;
+
+  inputs.forEach((input) => {
+    if (input.checked) {
+      contadorMarcados++;
+    }
+  });
+
+  if (contadorMarcados === totalQuestoes) {
+    btnConcluir.style.display = "block";
+  } else {
+    btnConcluir.style.display = "none";
+  }
+}
+
+function verificarRespostas() {
+  const perguntasContainer = document.querySelectorAll(".perguntas-container");
+
+  for (let i = 0; i < perguntasContainer.length; i++) {
+    const inputSelecionado = perguntasContainer[i].querySelector(
+      'input[name="select' + i + '"]:checked'
+    );
+
+    if (inputSelecionado) {
+      const respostaSelecionada = inputSelecionado.value;
+      const respostaCorreta = valores[i].correctAlternativa;
+
+      if (respostaSelecionada == respostaCorreta) {
+        perguntasContainer[i].style.border = "1px solid #55ce77";
+        perguntasContainer[i].style.backgroundColor = "#a4ffbe";
+      } else {
+        perguntasContainer[i].style.border = "1px solid #d36980";
+        perguntasContainer[i].style.backgroundColor = "#ffa4b8";
+      }
+    }
+  }
 }
 
 function organizarPessoas(pessoas) {
@@ -317,21 +356,31 @@ function popularContTemas() {
   }
 }
 
-btnContinuar.addEventListener("click", () => {
-  btnContinuar.style.display = "none";
-  btnConcluir.style.display = "none";
-  btnReiniciar.style.display = "none";
-  btnVoltar.style.display = "block";
-  divResultados.style.display = "flex";
-  divMedia.style.display = "flex";
-  divConTemas.style.display = "flex";
-  BotaoContinuar();
-  
-});
+function recebePontuacao(pessoas) {
+  // Somatória da quantidade de acertos por pessoa e soma a quantidade de partidas realizadas, que estão no array pessoas.
+  for (let pessoa of pessoas) {
+    totalAcertos += pessoa.pontuacao;
+    qtdPartidasFinalizadas++;
+  }
+  return totalAcertos;
+}
 
+function calcularMedias(contagemAcertos) {
+  // Somatória dos acertos de todas as partidas realizadas e posteriormente realiza o cálculo das médias de acertos e erros.
+  totalAcertos += contagemAcertos;
+  qtdPartidasFinalizadas++;
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Botão Voltar
+  mediaAcertos = (totalAcertos / qtdPartidasFinalizadas);
+  mediaErros = (PONTUACAO_MAXIMA - mediaAcertos);
+
+  document.getElementById("media-acertos").innerHTML = `<p>Média de acertos: ${mediaAcertos.toFixed(1).replace(".",",")}</p>`;
+  document.getElementById("media-erros").innerHTML = `<p>Média de erros: ${mediaErros.toFixed(1).replace(".",",")}</p>`;
+}
+
+function notificarAcertos() {
+  // notifica que houve uma atualização de contagemAcertos da função checarQuestoes().
+  document.dispatchEvent(contagemAtualizadaAcertos);
+}
 
 function BotaoVoltar() {
   clearInterval(interval);
@@ -359,28 +408,7 @@ function BotaoVoltar() {
   dataAtual.value = ""
 }
 
-btnVoltar.addEventListener("click", () => {
-  pausar = false;
-  divTimer.style.display = "none";
-  BotaoVoltar();
-});
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Dark Mode Button
-const linkCss = document.querySelector("#link-css");
-console.log({ linkCss });
-
-const darkMode = document.getElementById("alternarModo");
-
-let counter = 1;
-
-function alternateMode(valor) {
-  if (valor == 0) {
-    linkCss.href = "./style/style-dark.css";
-  } else if (valor == 1) {
-    linkCss.href = "./style/style.css";
-  }
-}
+muteBtn.addEventListener("click", playPause);
 
 darkMode.addEventListener("click", () => {
   if (counter == 1) {
@@ -392,50 +420,64 @@ darkMode.addEventListener("click", () => {
   }
 });
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ON/Mute Audio Button
+tema.addEventListener("change", () => {
+  selectedTema = tema.value;
+});
 
-const audio = document.getElementById("audioPlay");
-const musicOn = document.getElementById("musicON");
-const musicOff = document.getElementById("musicOFF");
-const muteBtn = document.getElementById("audioMute");
-const seta = document.getElementById("seta");
-
-function playPause() {
-  if (audio.paused) {
-    audio.play();
-    musicOn.style.display = "block";
-    musicOff.style.display = "none";
-    seta.style.display = "none";
-  } else {
-    audio.pause();
-    musicOn.style.display = "none";
-    musicOff.style.display = "block";
-    seta.style.display = "none";
+document.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    e.preventDefault();
   }
-}
+});
 
-muteBtn.addEventListener("click", playPause);
+btnIniciar.addEventListener("click", () => {
+  console.log(nome.value);
+  if (
+    selectedTema === "entretenimento" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
+    valores = entretenimento;
+    tituloTema.innerText = "Entretenimento";
+    mostrarTema(valores);
+    cronometro();
+  } else if (
+    selectedTema === "artes" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
+    valores = artes;
+    tituloTema.innerText = "Artes";
+    mostrarTema(valores);
+    cronometro();
+  } else if (
+    selectedTema === "esportes" &&
+    nome.value != "" &&
+    tema.value != "0"
+  ) {
+    valores = esportes;
+    tituloTema.innerText = "Esportes";
+    mostrarTema(valores);
+    cronometro();
+  } else {
+    console.log(`Não funcionou...`);
+    alerta();
+  }
+});
 
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Botão Conluir e Checagem
+btnReiniciar.addEventListener("click", () => {
+  BotaoReiniciar();
+});
 
-//Botão Concluir
-let validador = [];
-let respostas = [];
-let temaSelecionado;
-let contagemAcertos = 0;
+listaPerguntas.addEventListener("change", () => {
+  verificarInputsMarcados();
+});
 
-let validar0;
-let validar1;
-let validar2;
-let validar3;
-let validar4;
-let validar5;
-let validar6;
-let validar7;
-let validar8;
-let validar9;
+document.querySelectorAll('input[type="radio"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    incrementarQuestoesRespondidas();
+  });
+});
 
 btnConcluir.addEventListener("click", (ev) => {
   //sair o botão concluir e colocar o continuar
@@ -461,134 +503,6 @@ btnConcluir.addEventListener("click", (ev) => {
   checarQuestoes(temaSelecionado);
 });
 
-function checarQuestoes(objeto) {
-  contagemAcertos = 0;
-  for (let i = 0; i < objeto.length; i++) {
-    validador.push(objeto[i].correctAlternativa);
-  }
-  console.log(validador);
-  respostas.push(validar0);
-  respostas.push(validar1);
-  respostas.push(validar2);
-  respostas.push(validar3);
-  respostas.push(validar4);
-  respostas.push(validar5);
-  respostas.push(validar6);
-  respostas.push(validar7);
-  respostas.push(validar8);
-  respostas.push(validar9);
-  console.log(respostas);
-
-  for (let i = 0; i < respostas.length; i++) {
-    if (respostas[i] == validador[i]) {
-      contagemAcertos++;
-    }
-  }
-  console.log(`acertos: ${contagemAcertos}`);
-  notificarAcertos();
-}
-
-//Checagem
-let totalQuestoes = 10;
-let questoesRespondidas = 0;
-
-function verificarInputsMarcados() {
-  const inputs = document.querySelectorAll('input[type="radio"]');
-  let contadorMarcados = 0;
-
-  inputs.forEach((input) => {
-    if (input.checked) {
-      contadorMarcados++;
-    }
-  });
-
-  if (contadorMarcados === totalQuestoes) {
-    btnConcluir.style.display = "block";
-  } else {
-    btnConcluir.style.display = "none";
-  }
-}
-
-function incrementarQuestoesRespondidas() {
-  questoesRespondidas++;
-
-  if (questoesRespondidas === totalQuestoes) {
-    btnConcluir.style.display = "block";
-  }
-}
-
-listaPerguntas.addEventListener("change", () => {
-  verificarInputsMarcados();
-});
-
-document.querySelectorAll('input[type="radio"]').forEach((input) => {
-  input.addEventListener("change", () => {
-    incrementarQuestoesRespondidas();
-  });
-});
-
-//Pintura de certo e errado
-function verificarRespostas() {
-  const perguntasContainer = document.querySelectorAll(".perguntas-container");
-
-  for (let i = 0; i < perguntasContainer.length; i++) {
-    const inputSelecionado = perguntasContainer[i].querySelector(
-      'input[name="select' + i + '"]:checked'
-    );
-
-    if (inputSelecionado) {
-      const respostaSelecionada = inputSelecionado.value;
-      const respostaCorreta = valores[i].correctAlternativa;
-
-      if (respostaSelecionada == respostaCorreta) {
-        perguntasContainer[i].style.border = "1px solid #55ce77";
-        perguntasContainer[i].style.backgroundColor = "#a4ffbe";
-      } else {
-        perguntasContainer[i].style.border = "1px solid #d36980";
-        perguntasContainer[i].style.backgroundColor = "#ffa4b8";
-      }
-    }
-  }
-}
-
-
-// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Médias de acertos e erros
-
-let totalAcertos = 0;
-let qtdPartidasFinalizadas = 0;
-let chamada = 1;
-let mediaAcertos = 0;
-let mediaErros = 0;
-const PONTUACAO_MAXIMA = 10;
-
-function recebePontuacao(pessoas) {
-  // Somatória da quantidade de acertos por pessoa e soma a quantidade de partidas realizadas, que estão no array pessoas.
-  for (let pessoa of pessoas) {
-    totalAcertos += pessoa.pontuacao;
-    qtdPartidasFinalizadas++;
-  }
-  return totalAcertos;
-}
-
-function calcularMedias(contagemAcertos) {
-  // Somatória dos acertos de todas as partidas realizadas e posteriormente realiza o cálculo das médias de acertos e erros.
-  totalAcertos += contagemAcertos;
-  qtdPartidasFinalizadas++;
-
-  mediaAcertos = (totalAcertos / qtdPartidasFinalizadas);
-  mediaErros = (PONTUACAO_MAXIMA - mediaAcertos);
-
-  document.getElementById("media-acertos").innerHTML = `<p>Média de acertos: ${mediaAcertos.toFixed(1).replace(".",",")}</p>`;
-  document.getElementById("media-erros").innerHTML = `<p>Média de erros: ${mediaErros.toFixed(1).replace(".",",")}</p>`;
-}
-
-const contagemAtualizadaAcertos = new Event('contagemAtualizada');
-function notificarAcertos() {
-  // notifica que houve uma atualização de contagemAcertos da função checarQuestoes().
-  document.dispatchEvent(contagemAtualizadaAcertos);
-}
-
 document.addEventListener('contagemAtualizada', () => {
   // O código dentro desta função será executado quando a contagemAcertos da partida for atualizada
   if (chamada === 1) {    // Será executado somente na primeira partida
@@ -598,4 +512,22 @@ document.addEventListener('contagemAtualizada', () => {
   } else {    // Será executado nas partidas seguintes
     calcularMedias(contagemAcertos);
   }
+});
+
+btnContinuar.addEventListener("click", () => {
+  btnContinuar.style.display = "none";
+  btnConcluir.style.display = "none";
+  btnReiniciar.style.display = "none";
+  btnVoltar.style.display = "block";
+  divResultados.style.display = "flex";
+  divMedia.style.display = "flex";
+  divConTemas.style.display = "flex";
+  BotaoContinuar();
+  
+});
+
+btnVoltar.addEventListener("click", () => {
+  pausar = false;
+  divTimer.style.display = "none";
+  BotaoVoltar();
 });
