@@ -126,12 +126,12 @@ document.addEventListener("keydown", function (e) {
 btnIniciar.addEventListener("click", () => {
   console.log(nome.value);
   if (
-    selectedTema === "entreterimento" &&
+    selectedTema === "entretenimento" &&
     nome.value != "" &&
     tema.value != "0"
   ) {
     valores = entretenimento;
-    tituloTema.innerText = "Entreterimento";
+    tituloTema.innerText = "Entretenimento";
     mostrarTema(valores);
     cronometro();
   } else if (
@@ -235,9 +235,7 @@ const dataAtual = new Date();
 const ano = dataAtual.getFullYear();
 const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
 const dia = String(dataAtual.getDate()).padStart(2, '0');
-const hora = String(dataAtual.getHours()).padStart(2, '0');
-const minuto = String(dataAtual.getMinutes()).padStart(2, '0');
-const dataFormatada = `${dia}-${mes}-${ano} ${hora}:${minuto}`;
+const dataFormatada = `${ano}-${mes}-${dia}`;
 
 
 function BotaoContinuar() {
