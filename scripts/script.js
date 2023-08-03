@@ -240,7 +240,7 @@ const minuto = String(dataAtual.getMinutes()).padStart(2, '0');
 const dataFormatada = `${dia}-${mes}-${ano} ${hora}:${minuto}`;
 
 
-function BotaoContinuar() {  
+function BotaoContinuar() {
 
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
@@ -252,11 +252,10 @@ function BotaoContinuar() {
     minutos: tempo(minutos),
     segundos: tempo(segundos),
     data: dataFormatada,
-    pontuacao: contagemAcertos          
-    
-  });  
-  
-  popularContTemas();
+    pontuacao: contagemAcertos
+  });
+
+  // popularContTemas();
   organizarPessoas(pessoas);
 }
 
@@ -280,6 +279,7 @@ function organizarPessoas(pessoas) {
 }
 
 function popularTabela() {
+  popularContTemas();
   // Limpa a tabela atual antes de popular novamente
   while (tabelaCorpo.firstChild) {
     tabelaCorpo.removeChild(tabelaCorpo.firstChild);
@@ -298,40 +298,27 @@ function popularTabela() {
   });
 
   console.log(pessoas);
-  popularContTemas();
 }
 
-function popularContTemas(valores) {  
-  console.log(tituloTema)
-  for(let i = 0; i < 5; i++) {
-    if (tituloTema.innerHTML == "Entreterimento") {
-    ordemPessoas1.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>      
-    `;
-    } else if(tituloTema.innerHTML == "Artes") {
-      ordemPessoas2.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>       
-    `;
-    } else if(tituloTema.innerHTML == "Esportes") {
-      ordemPessoas3.innerHTML = `
-      <li class="position">João</li> 
-      <li class="position">Maria</li> 
-      <li class="position">Jose</li> 
-      <li class="position">Vitor</li> 
-      <li class="position">${nome.value}</li>       
-    `;
-    }
+function popularContTemas() {
+  const arrayPessoas = pessoas.slice();
+  function sortfunction(a, b){
+    return b.pontuacao - a.pontuacao; //faz com que o array seja ordenado numericamente e de ordem decrescente.
 }
-  
-  
+  pessoas.sort(sortfunction); 
+  ordemPessoas1.innerHTML = "";
+  ordemPessoas2.innerHTML = "";
+  ordemPessoas3.innerHTML = "";
+  for(let pessoa of arrayPessoas) {
+    const inserirPosicao = `<li class="position">${pessoa.nome} - ${pessoa.pontuacao}/10</li>`;
+    if (pessoa.tema === "Entretenimento") {
+    ordemPessoas1.innerHTML += inserirPosicao;
+    } else if(pessoa.tema === "Artes") {
+      ordemPessoas2.innerHTML += inserirPosicao;
+    } else if(pessoa.tema === "Esportes") {
+      ordemPessoas3.innerHTML += inserirPosicao;
+    }
+  }
 }
 
 btnContinuar.addEventListener("click", () => {
@@ -342,7 +329,7 @@ btnContinuar.addEventListener("click", () => {
   divResultados.style.display = "flex";
   divMedia.style.display = "flex";
   divConTemas.style.display = "flex";
-  BotaoContinuar();  
+  BotaoContinuar();
 });
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
