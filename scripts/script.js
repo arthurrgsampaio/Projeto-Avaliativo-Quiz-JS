@@ -230,15 +230,16 @@ const ordemPessoas2 = document.getElementById("position2");
 const ordemPessoas3 = document.getElementById("position3");
 const tabelaCorpo = document.getElementById('tabelaCorpo');
 
-const dataAtual = new Date();
-
-const ano = dataAtual.getFullYear();
-const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
-const dia = String(dataAtual.getDate()).padStart(2, '0');
-const dataFormatada = `${ano}-${mes}-${dia}`;
-
-
 function BotaoContinuar() {
+  const dataAtual = new Date();
+
+  const ano = dataAtual.getFullYear();
+  const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); 
+  const dia = String(dataAtual.getDate()).padStart(2, '0');
+  const hora = String(dataAtual.getHours()).padStart(2, '0');
+  const minuto = String(dataAtual.getMinutes()).padStart(2, '0');
+  const dataFormatada = `${dia}-${mes}-${ano} ${hora}:${minuto}`;
+
   divTimer.style.display = "none";
   perguntasContainer.style.display = "none";
   tituloTema.style.display = "none";
@@ -355,6 +356,7 @@ function BotaoVoltar() {
   tema.value = "0";
   selectedTema = "";
   console.log(btnReiniciar);
+  dataAtual.value = ""
 }
 
 btnVoltar.addEventListener("click", () => {
