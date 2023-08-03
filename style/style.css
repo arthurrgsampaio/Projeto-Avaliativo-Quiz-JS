@@ -1,8 +1,5 @@
-/* Imports */
 @import url("./var.css");
 
-/* *************************************************************************************************************************************** */
-/* Estilização geral */
 * {
   margin: 0;
   padding: 0;
@@ -16,9 +13,6 @@ body {
   width: 100vw;
   position: relative;
 }
-
-/* *************************************************************************************************************************************** */
-/* Alerta */
 
 #alert {
   display: none;
@@ -43,15 +37,12 @@ body {
   margin: var(--2x);
 }
 
-/* *************************************************************************************************************************************** */
-/* Estilização header */
 header {
   height: 10%;
   display: flex;
   justify-content: space-around;
 }
 
-/* apenas momentâneo enquanto n colocamos */
 #timer {
   font-size: var(--6x);
   font-weight: bold;
@@ -63,6 +54,14 @@ header {
 
 #audio {
   display: flex;
+}
+
+#seta {
+  font-weight: 500;
+  position: absolute;
+  width: 315px;
+  left: -300px;
+  color: var(--texto-light);
 }
 
 #header-buttons {
@@ -77,11 +76,6 @@ header {
   font-size: var(--5x);
 }
 
-/* usado para esconder botões para alterar depois */
-.hide {
-  display: none;
-}
-
 .btn-header {
   font-size: var(--4x);
   border: none;
@@ -89,16 +83,10 @@ header {
   cursor: pointer;
 }
 
-#seta {
-  font-weight: 500;
-  position: absolute;
-  width: 315px;
-  left: -300px;
-  color: var(--texto-light);
+.hide {
+  display: none;
 }
 
-/* *************************************************************************************************************************************** */
-/* Corpo do site */
 main {
   height: max-content;
   display: flex;
@@ -183,43 +171,13 @@ main {
   background-color: var(--secundaria-light);
 }
 
-/* *************************************************************************************************************************************** */
-/* "Escondendo" a arquitetura da página */
+.titulo-tema {
+  color: var(--texto-light);
+  margin-bottom: var(--5x);
+}
+
 .perguntas {
   display: none;
-}
-
-.btn-end {
-  display: none;
-}
-
-#reiniciar {
-  display: none;
-}
-
-#concluir {
-  display: none;
-}
-
-#continuar {
-  display: none;
-}
-
-#voltar {
-  display: none;
-}
-
-.resultados {
-  display: none;
-}
-
-.container-temas {
-  display: none;
-}
-
-/* *************************************************************************************************************************************** */
-/* Estilização das perguntas */
-.perguntas {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: start;
@@ -232,11 +190,6 @@ main {
 
 #lista-perguntas {
   width: 100%;
-}
-
-.titulo-tema {
-  color: var(--texto-light);
-  margin-bottom: var(--5x);
 }
 
 .perguntas-container {
@@ -262,8 +215,6 @@ main {
   gap: var(--2x);
 }
 
-/* *************************************************************************************************************************************** */
-/* Estilização da página de resultados */
 .container-resultados {
   display: flex;
   flex-direction: column;
@@ -322,13 +273,6 @@ main {
   color: var(--texto-light);
 }
 
-#entretenimento h2,
-#artes h2,
-#esportes h2 {
-  font-size: var(--6x);
-  text-align: center;
-}
-
 #entretenimento,
 #artes,
 #esportes {
@@ -344,51 +288,42 @@ main {
   overflow-y: scroll;
 }
 
+#entretenimento h2,
+#artes h2,
+#esportes h2 {
+  font-size: var(--6x);
+  text-align: center;
+}
+
 .ranking {
   counter-reset: posicao;
 }
 
-li.position:before {
-  /* content: counter(posicao) ". ";
-  counter-increment: posicao; */
-  font-weight: bold;
-  font-size: var(--4x);
-  padding: 0 var(--1x);
+li.position {
+  font-size: var(--5x);
 }
-
-/* *************************************************************************************************************************************** */
-/* Estilização da barra de scrol do overflow */
-::-webkit-scrollbar {
-  width: 10px;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: var(--4x);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--contraste-light);
-  border-radius: 10px;
-}
-
-/* *************************************************************************************************************************************** */
-/* Estilização botões inferiores */
 
 .btn-end {
   padding-top: var(--4x);
   width: 50%;
-  display: flex;
+  display: none;
   justify-content: space-around;
 }
 
-.btnInferiores {
-  width: 160px;
-  padding: var(--4x);
-  color: var(--secundaria-light);
-  background-color: var(--contraste-light);
-  border: none;
-  border-radius: var(--6x);
-  cursor: pointer;
-  transition: 0.5s;
-  font-weight: bold;
+#reiniciar {
+  display: none;
+}
+
+#concluir {
+  display: none;
+}
+
+#continuar {
+  display: none;
+}
+
+#voltar {
+  display: none;
 }
 
 #reiniciar:hover {
@@ -407,4 +342,27 @@ li.position:before {
   color: var(--contraste-light);
   border: 1px solid var(--contraste-light);
   background-color: var(--secundaria-light);
+}
+
+.btnInferiores {
+  width: 160px;
+  padding: var(--4x);
+  color: var(--secundaria-light);
+  background-color: var(--contraste-light);
+  border: none;
+  border-radius: var(--6x);
+  cursor: pointer;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: var(--4x);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--contraste-light);
+  border-radius: 10px;
 }
