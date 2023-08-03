@@ -251,7 +251,6 @@ function BotaoContinuar() {
     segundos: tempo(segundos),
     data: dataFormatada,
     pontuacao: contagemAcertos          
-    
   });  
   
   popularContTemas();
